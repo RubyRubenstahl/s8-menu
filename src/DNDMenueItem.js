@@ -10,7 +10,7 @@ import isFunction from 'lodash.isfunction';
 
 const dropTarget = {
   drop(props, monitor) {
-    if(isFunction(props.handleDrop)){
+    if(isFunction(props.onDropped)){
       const type = monitor.getItemType();
       const item = monitor.getItem();
       let payload;
@@ -31,7 +31,7 @@ const dropTarget = {
       }
 
       const dropResult = monitor.getDropResult();
-      props.handleDrop({payload, type, dropResult});
+      props.onDropped({payload, type, dropResult});
     }
   }
 };
@@ -54,7 +54,22 @@ class DNDMenueItem extends Component{
 };
 
 DNDMenueItem.propTypes = {
-
+  icon: propTypes.object,
+  openIcon: propTypes.object,
+  backgroundColor: propTypes.string,
+  textColor: propTypes.string,
+  title: propTypes.oneOfType([
+    propTypes.string,
+    propTypes.element
+  ]).isRequired,
+  onItemClick: propTypes.func,
+  onIconClick: propTypes.func,
+  dragType: propTypes.string,
+  dropTypes: propTypes.oneOf([
+      propTypes.string,
+      propTypes.arrayOf(propTypes.string)
+  ]),
+  onDropped: propTypes.func
 };
 
 
