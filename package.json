@@ -6,7 +6,7 @@
   "author": "Ruby Rubenstahl",
   "license": "MIT",
   "scripts": {
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -p 6006 -h 0.0.0.0",
     "build-storybook": "build-storybook"
   },
   "dependencies": {

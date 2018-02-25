@@ -33,9 +33,9 @@ storiesOf('Menu', module)
     <Menu>
       <MenuItem icon={folderIcon}
                 openIcon={folderOpenIcon}
-                backgroundColor={'blue'}
-                iconColor={'yellow'}
-                textColor={'red'}
+                backgroundColor={'#fff37a54'}
+                iconColor={'#909000'}
+                textColor={'#006d50'}
                 title="Deep Folder"
                 onItemClick={action('item click')}
                 onIconClick={action('icon click')}
@@ -126,7 +126,7 @@ storiesOf('Custom Render', module)
     .add('DND Menu', () =>
         <div>
           <Menu>
-            <DNDMenueItem icon={bulbIcon} dragType={'action'} cuelist={5} cue={4} payload={1} render={cuelistRenderer} onPlay={()=>console.log('playing')} title={'Scene5'}/>
+            <DNDMenueItem icon={bulbIcon} dragType={'action'} cuelist={5} cue={4} payload={1} render={cuelistRenderer} onPlay={action('playing')} title={'Scene5'}/>
             <DNDMenueItem icon={bulbIcon} dragType={'action'} cuelist={5} cue={3} payload={1} render={cuelistRenderer} title={'Scene4'}/>
             <DNDMenueItem icon={bulbIcon} dragType={'action'} cuelist={5} cue={2} payload={1} render={cuelistRenderer} title={'Scene3'}/>
             <DNDMenueItem icon={bulbIcon} dragType={'action'} cuelist={5} cue={1} payload={1} render={cuelistRenderer} title={'Scene2'}/>

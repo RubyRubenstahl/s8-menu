@@ -55,7 +55,7 @@ class MenuItem extends Component{
   shouldComponentUpdate(nextProps, nextState){
     if(this.state.open !== nextState.open) return true;
     if(this.props.isOver !== nextProps.isOver) return true;
-    return true;
+    return false;
   }
 
   handleClick(e){
@@ -88,7 +88,6 @@ class MenuItem extends Component{
     const hasOpenIcon = openIcon !== undefined;
     const showOpenIcon = open && hasOpenIcon;
     const labelIcon =  showOpenIcon ? openIcon : icon;
-    console.log('CanDrop: ' + this.props.canDrop)
     return (
       <MenuItemContainer {...this.props}>
         <Label  {...this.props}>
@@ -99,7 +98,8 @@ class MenuItem extends Component{
             onTouchState={this.handleIconClick}
             {...this.props}
         >
-          {labelIcon}
+          <span style={{display: showOpenIcon ? 'none':'inline-block'}}>{icon}</span>
+          <span style={{display: showOpenIcon ? 'inline-block':'none'}}>{openIcon}</span>
         </IconContainer>
 
         <Title {...this.props} onClick={this.handleClick} >{title}</Title>
