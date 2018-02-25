@@ -4,7 +4,7 @@ A flexible, drag-and-drop enabled menu component for react.
 This component is in testing mode and is not ready for prime-time.
 
 ### Basic menu
-```JS
+```JSX
 import React from 'react';
 import { Menu, MenuItem, DNDMenueItem } from s8-menu';
 
@@ -34,7 +34,7 @@ const menu=()=>
 
 
 ### Drag & Drop Menu
-```JS
+```JSX
 import React from 'react';
 import { Menu, MenuItem, DNDMenueItem } from s8-menu';
 import HTML5Backend from 'react-dnd-html5-backend';
