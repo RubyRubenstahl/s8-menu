@@ -9,7 +9,7 @@ import Menu from "./Menu";
 import Collapse from "react-collapse";
 
 const defaultIcon = () => <span>&#x23F5;</span>;
-const defaultOpenIcon = ()=> <span>&#x23F7;</span>
+const defaultOpenIcon = () => <span>&#x23F7;</span>;
 
 const IconContainer = styled.span`
   padding: 8px;
@@ -35,8 +35,7 @@ const Label = styled.div`
       : `background-color: rgba(0,0,0,0);
       &:hover {
       background-color: rgba(0,0,0,.03);
-      }`
-  }
+      }`};
 `;
 
 const MenuItemContainer = styled.li`
@@ -134,12 +133,9 @@ MenuItem.propTypes = {
   openIcon: propTypes.object,
   backgroundColor: propTypes.string,
   textColor: propTypes.string,
-  title: propTypes.oneOfType([
-      propTypes.string,
-      propTypes.element
-  ]).isRequired,
+  title: propTypes.oneOfType([propTypes.string, propTypes.element]).isRequired,
   onItemClick: propTypes.func,
-  onIconClick: propTypes.func,
+  onIconClick: propTypes.func
 };
 
 export default MenuItem;
