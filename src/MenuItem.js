@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import isFunction from 'lodash.isfunction';
 import Menu from "./Menu";
 import Collapse from 'react-collapse';
+import {presets} from 'react-motion';
 
 const IconContainer = styled.span`
   padding: 8px;
@@ -22,11 +23,17 @@ const Title = styled.span`
 const Label = styled.div`
   display: flex;
   align-items: center;
+  transition: all .2s ease-in-out;
+  background-color: rgba(0,0,0,0);
+  &:hover {
+  background-color: rgba(0,0,0,.03);
+  }
 `
 
 const MenuItemContainer = styled.li`
   display: flex;
   flex-direction: column;
+  ${props=> props.css && props.css}
 `;
 
 class MenuItem extends Component{
@@ -38,6 +45,10 @@ class MenuItem extends Component{
     this.handleIconClick = this.handleIconClick.bind(this);
   }
 
+  shouldComponentUpdate(nextProps, nextState){
+    return this.state.open !== nextState.open;
+  }
+
   handleIconClick(){
     if(isFunction(this.props.onClick)){
       this.props.onClick();
@@ -46,28 +57,32 @@ class MenuItem extends Component{
   }
 
   render(){
-    const {title, children, icon, openIcon, open} = this.props;
-    const hasChildren = children && children.length > 0;
+    const {title, children, icon, openIcon} = this.props;
+    const {open} = this.state;
 
-    const isOpen = open === undefined ? this.state.open : open;
-    const labelIcon = open && openIcon !==undefined ? openIcon : icon;
+    // TODO: Fix open folder display
+    // TODO: Fix reveal springyness
+    const hasChildren = children && children.length > 0;
+    const hasOpenIcon = openIcon !== undefined;
+    const showOpenIcon = open && hasOpenIcon;
+    const labelIcon =  showOpenIcon ? openIcon : icon;
 
     return (
-      <MenuItemContainer>
+      <MenuItemContainer {...this.props}>
         <Label>
-        {icon &&
-            <IconContainer
-                expandable={hasChildren}
-                onClick={this.handleIconClick}
-                onTouchState={this.handleIconClick}
-            >
-              {icon}
-            </IconContainer>
-        }
+
+        <IconContainer
+            expandable={hasChildren}
+            onClick={this.handleIconClick}
+            onTouchState={this.handleIconClick}
+        >
+          {labelIcon}
+        </IconContainer>
+
         <Title>{title}</Title>
         </Label>
 
-        <Collapse isOpened={isOpen}>
+        <Collapse isOpened={Boolean(open)} springConfig={{stiffness:203, damping:29}}>
           <Menu >{children}</Menu>
         </Collapse>
       </MenuItemContainer>

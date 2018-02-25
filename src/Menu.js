@@ -11,6 +11,8 @@ const MenuContainer = styled.ul`
   padding-left: 12pt;
   overflow:hidden;
   flex-direction: column;
+  cursor: default;
+  user-select: none;
   ${props=> props.css && props.css}
 `;
 
