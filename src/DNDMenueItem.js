@@ -65,7 +65,7 @@ DNDMenueItem.propTypes = {
   onItemClick: propTypes.func,
   onIconClick: propTypes.func,
   dragType: propTypes.string,
-  dropTypes: propTypes.oneOf([
+  dropTypes: propTypes.oneOfType([
       propTypes.string,
       propTypes.arrayOf(propTypes.string)
   ]),
