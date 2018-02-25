@@ -31,7 +31,15 @@ const DragDropDecorator = (story) => {
 storiesOf('Menu', module)
   .add('uncontrolled', () =>
     <Menu>
-      <MenuItem icon={folderIcon} openIcon={folderOpenIcon} title="Folder1">
+      <MenuItem icon={folderIcon}
+                openIcon={folderOpenIcon}
+                backgroundColor={'blue'}
+                iconColor={'yellow'}
+                textColor={'red'}
+                title="Deep Folder"
+                onItemClick={action('item click')}
+                onIconClick={action('icon click')}
+       >
         <MenuItem icon={bulbIcon} title={'Scene1'}/>
         <MenuItem icon={bulbIcon} title={'Scene2'}/>
         <MenuItem icon={bulbIcon} title={'Scene3'}/>

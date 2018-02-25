@@ -12,10 +12,12 @@ import {presets} from 'react-motion';
 const IconContainer = styled.span`
   padding: 8px;
   display: inline-block;
+  color: ${props=>props.iconColor ? props.iconColor: 'inherit'};
   ${props=> props.expandable && 'cursor: pointer;'}
 `;
 
 const Title = styled.span`
+  color: ${props=>props.textColor ? props.textColor: 'inherit'};
   flex-grow: 1;
 `;
 
@@ -24,13 +26,16 @@ const Label = styled.div`
   display: flex;
   align-items: center;
   transition: all .2s ease-in-out;
-  outline: ${props=>props.isOver ?  '2px dashed lightblue' : '2px dashed #FFFFFF00'};
+  outline: ${props => props.isOver ? '2px dashed lightblue' : '2px dashed #FFFFFF00'};
   outline-offset: -2pt;
-  background-color: rgba(0,0,0,0);
-  &:hover {
-  background-color: rgba(0,0,0,.03);
+  ${props=>props.backgroundColor ? 
+      `background-color: ${props.backgroundColor}` : 
+      `background-color: rgba(0,0,0,0);
+      &:hover {
+      background-color: rgba(0,0,0,.03);
+      }`
   }
-`
+`;
 
 const MenuItemContainer = styled.li`
   display: flex;
@@ -44,6 +49,7 @@ class MenuItem extends Component{
     this.state = {open: props.initiallyOpen};
 
     this.handleIconClick = this.handleIconClick.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   shouldComponentUpdate(nextProps, nextState){
@@ -52,9 +58,16 @@ class MenuItem extends Component{
     return true;
   }
 
+  handleClick(e){
+    if(isFunction(this.props.onItemClick)){
+      this.props.onItemClick(e);
+      e.preventDefault();
+    }
+  }
+
   handleIconClick(){
-    if(isFunction(this.props.onClick)){
-      this.props.onClick();
+    if(isFunction(this.props.onIconClick)){
+      this.props.onIconClick();
     }
     this.setState({open: !this.state.open});
   }
@@ -65,7 +78,7 @@ class MenuItem extends Component{
       return render(rest);
     }
 
-    const {title, children, icon, openIcon, isOver, } = this.props;
+    const {title, children, icon, openIcon, isOver, textColor } = this.props;
     const {open} = this.state;
 
 
@@ -78,17 +91,18 @@ class MenuItem extends Component{
     console.log('CanDrop: ' + this.props.canDrop)
     return (
       <MenuItemContainer {...this.props}>
-        <Label isOver={isOver}>
+        <Label  {...this.props}>
 
         <IconContainer
             expandable={hasChildren}
             onClick={this.handleIconClick}
             onTouchState={this.handleIconClick}
+            {...this.props}
         >
           {labelIcon}
         </IconContainer>
 
-        <Title>{title}</Title>
+        <Title {...this.props} onClick={this.handleClick} >{title}</Title>
         </Label>
 
         <Collapse isOpened={Boolean(open)} springConfig={{stiffness:203, damping:29}}>
