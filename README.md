@@ -8,6 +8,7 @@ This component is in testing mode and is not ready for prime-time.
 import React from 'react';
 import { Menu, MenuItem, DNDMenueItem } from s8-menu';
 
+// FontAwesome must be included in your page to use these icons
 const bulbIcon = <i style={{color:'#efd75f'}} className="fas fa-lightbulb"></i>;
 const folderIcon = <i style={{color:'lightblue'}} className="fas fa-folder"></i>;
 const folderOpenIcon = <i style={{color:'lightblue'}} className="fas fa-folder-open"></i>;
@@ -40,6 +41,7 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import { NativeTypes } from 'react-dnd-html5-backend';
 import { DragDropContextProvider } from 'react-dnd';
 
+// FontAwesome must be included in your page to use these icons
 const bulbIcon = <i style={{color:'#efd75f'}} className="fas fa-lightbulb"></i>;
 const folderIcon = <i style={{color:'lightblue'}} className="fas fa-folder"></i>;
 const folderOpenIcon = <i style={{color:'lightblue'}} className="fas fa-folder-open"></i>;
