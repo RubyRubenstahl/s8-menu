@@ -4,21 +4,37 @@
 import React, {Component} from 'react';
 import propTypes from 'prop-types';
 import { NativeTypes } from 'react-dnd-html5-backend';
-import { DropTarget } from 'react-dnd';
+import { DropTarget, DragSource } from 'react-dnd';
 import MenuItem from './MenuItem';
 import isFunction from 'lodash.isfunction';
 
-const fileTarget = {
+const dropTarget = {
   drop(props, monitor) {
+    if(isFunction(props.handleDrop)){
+      const type = monitor.getItemType();
+      const item = monitor.getItem();
+      let payload;
 
-    if(isFunction(props.onDrop)){
-      props.onDrop(props, monitor);
+      switch(type){
+        case NativeTypes.FILE:
+          payload = item.files
+          break;
+        case NativeTypes.TEXT:
+          payload = item.text;
+          break;
+        case NativeTypes.URL:
+          payload = item.urls;
+          break;
+        default:
+          payload = item.payload;
+          break;
+      }
+
+      const dropResult = monitor.getDropResult();
+      props.handleDrop({payload, type, dropResult});
     }
-
   }
 };
-
-
 
 
 class DNDMenueItem extends Component{
@@ -29,11 +45,11 @@ class DNDMenueItem extends Component{
   }
 
   render(){
-    const {connectDropTarget, isOver} = this.props;
-    console.log(isOver)
+    const {connectDropTarget, connectDragSource, isOver} = this.props;
     return connectDropTarget(
+        connectDragSource(
         <div><MenuItem {...this.props}/></div>
-    )
+    ));
   }
 };
 
@@ -42,10 +58,38 @@ DNDMenueItem.propTypes = {
 };
 
 
+  const dragSpec = {
+    beginDrag(props, monitor){
+      return props;
+    },
+    isDragging(props, monitor) {
+      // If your component gets unmounted while dragged
+      // (like a card in Kanban board dragged between lists)
+      // you can implement something like this to keep its
+      // appearance dragged:
 
-  export default DropTarget(({dropTypes=[]})=>dropTypes, fileTarget, (connect, monitor) => ({
+      return monitor.getItem().payload === props.payload;
+    },
+  };
+
+function collect(connect, monitor) {
+  return {
+    // Call this function inside render()
+    // to let React DnD handle the drag events:
+    connectDragSource: connect.dragSource(),
+    // You can ask the monitor about the current drag state:
+    isDragging: monitor.isDragging()
+  };
+}
+
+
+  const Draggable = DragSource(({dragType='none'})=>dragType, dragSpec,collect)(DNDMenueItem);
+
+  const Droppable = DropTarget(({dropTypes=[]})=>dropTypes, dropTarget, (connect, monitor) => ({
     connectDropTarget: connect.dropTarget(),
-    isOver: monitor.isOver(),
+    isOver: monitor.isOver({ shallow: true }),
     canDrop: monitor.canDrop()
-  }))(DNDMenueItem)
+  }))(Draggable);
 
+
+  export default Droppable;

@@ -24,6 +24,8 @@ const Label = styled.div`
   display: flex;
   align-items: center;
   transition: all .2s ease-in-out;
+  outline: ${props=>props.isOver ?  '2px dashed lightblue' : '2px dashed #FFFFFF00'};
+  outline-offset: -2pt;
   background-color: rgba(0,0,0,0);
   &:hover {
   background-color: rgba(0,0,0,.03);
@@ -33,7 +35,6 @@ const Label = styled.div`
 const MenuItemContainer = styled.li`
   display: flex;
   flex-direction: column;
-  ${props=> props.css && props.css}
 `;
 
 class MenuItem extends Component{
@@ -46,7 +47,9 @@ class MenuItem extends Component{
   }
 
   shouldComponentUpdate(nextProps, nextState){
-    return this.state.open !== nextState.open;
+    if(this.state.open !== nextState.open) return true;
+    if(this.props.isOver !== nextProps.isOver) return true;
+    return true;
   }
 
   handleIconClick(){
@@ -57,8 +60,14 @@ class MenuItem extends Component{
   }
 
   render(){
-    const {title, children, icon, openIcon} = this.props;
+    const {render, ...rest} = this.props;
+    if(isFunction(render)){
+      return render(rest);
+    }
+
+    const {title, children, icon, openIcon, isOver, } = this.props;
     const {open} = this.state;
+
 
     // TODO: Fix open folder display
     // TODO: Fix reveal springyness
@@ -66,10 +75,10 @@ class MenuItem extends Component{
     const hasOpenIcon = openIcon !== undefined;
     const showOpenIcon = open && hasOpenIcon;
     const labelIcon =  showOpenIcon ? openIcon : icon;
-
+    console.log('CanDrop: ' + this.props.canDrop)
     return (
       <MenuItemContainer {...this.props}>
-        <Label>
+        <Label isOver={isOver}>
 
         <IconContainer
             expandable={hasChildren}
