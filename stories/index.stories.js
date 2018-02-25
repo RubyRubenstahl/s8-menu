@@ -8,18 +8,10 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
 import { Menu, MenuItem, DNDMenueItem } from '../';
-const bulbIcon = <i className="fas fa-lightbulb"></i>;
-const folderIcon = <i className="far fa-folder"></i>;
-const folderOpenIcon = <i className="far fa-folder-open"></i>;
+const bulbIcon = <i style={{color:'#efd75f'}} className="fas fa-lightbulb"></i>;
+const folderIcon = <i style={{color:'lightblue'}} className="fas fa-folder"></i>;
+const folderOpenIcon = <i style={{color:'lightblue'}} className="fas fa-folder-open"></i>;
 
-
-const BlueMenuItem = styled(MenuItem)`
-  color: #0ba8ce;
-`;
-
-const MagentaMenuItem = styled(MenuItem)`
-  color: #663399;
-`;
 
 const DragDropDecorator = (story) => {
   return (
@@ -29,16 +21,11 @@ const DragDropDecorator = (story) => {
   );
 };
 storiesOf('Menu', module)
-  .add('uncontrolled', () =>
+  .add('basic', () =>
     <Menu>
       <MenuItem icon={folderIcon}
                 openIcon={folderOpenIcon}
-                backgroundColor={'#fff37a54'}
-                iconColor={'#909000'}
-                textColor={'#006d50'}
-                title="Deep Folder"
-                onItemClick={action('item click')}
-                onIconClick={action('icon click')}
+                title="Folder"
        >
         <MenuItem icon={bulbIcon} title={'Scene1'}/>
         <MenuItem icon={bulbIcon} title={'Scene2'}/>
@@ -66,36 +53,65 @@ storiesOf('Menu', module)
     )
     .add('styled',() =>
       <Menu>
-        <BlueMenuItem icon={folderIcon}initiallyOpen={true} openIcon={folderOpenIcon} title="Folder1">
+        <MenuItem icon={folderIcon}
+                  openIcon={folderOpenIcon}
+                  backgroundColor={'#e1f1ff'}
+                  textColor={'green'}
+                  title="Folder"
+                  onItemClick={action('item click')}
+                  onIconClick={action('icon click')}
+        >
           <MenuItem icon={bulbIcon} title={'Scene1'}/>
           <MenuItem icon={bulbIcon} title={'Scene2'}/>
           <MenuItem icon={bulbIcon} title={'Scene3'}/>
-        </BlueMenuItem>
-        <MagentaMenuItem icon={bulbIcon} title={'Scene4'}/>
+        </MenuItem>
+        <MenuItem icon={bulbIcon} title={'Scene4'}/>
         <MenuItem icon={bulbIcon} title={'Scene5'}/>
       </Menu>
     )
-    .add('controlled', ()=>
+    .add('default icon', () =>
         <Menu>
-          <MenuItem icon={folderIcon}  open={true} openIcon={folderOpenIcon} title="Folder1">
+          <MenuItem title="Deep Folder">
             <MenuItem icon={bulbIcon} title={'Scene1'}/>
             <MenuItem icon={bulbIcon} title={'Scene2'}/>
-            <MenuItem icon={bulbIcon} title={'Scene3'}/>
+            <MenuItem icon={folderIcon} openIcon={folderOpenIcon} title="Deep Folder">
+              <MenuItem icon={bulbIcon} title={'Scene6'}/>
+              <MenuItem icon={bulbIcon} title={'Scene7'}/>
+              <MenuItem icon={bulbIcon} title={'Scene8'}/>
+            </MenuItem>
           </MenuItem>
           <MenuItem icon={bulbIcon} title={'Scene4'}/>
           <MenuItem icon={bulbIcon} title={'Scene5'}/>
         </Menu>
-    );
+    )
+    .add('click handlers', () =>
+    <Menu>
+      <MenuItem title="Click Me"
+                onItemClick={action('item click')}
+                onIconClick={action('icon click')}
+      >
+        <MenuItem icon={bulbIcon} title={'Scene1'}/>
+        <MenuItem icon={bulbIcon} title={'Scene2'}/>
+        <MenuItem icon={folderIcon} openIcon={folderOpenIcon} title="Deep Folder">
+          <MenuItem icon={bulbIcon} title={'Scene6'}/>
+          <MenuItem icon={bulbIcon} title={'Scene7'}/>
+          <MenuItem icon={bulbIcon} title={'Scene8'}/>
+        </MenuItem>
+      </MenuItem>
+      <MenuItem icon={bulbIcon} title={'Scene4'}/>
+      <MenuItem icon={bulbIcon} title={'Scene5'}/>
+    </Menu>
+);
 
 storiesOf('Drag and Drop Menu', module)
     .addDecorator(DragDropDecorator)
     .add('DND Menu', () =>
         <div>
           <Menu>
-            <DNDMenueItem icon={folderIcon} dropTypes={[NativeTypes.FILE, 'media','action', NativeTypes.TEXT, NativeTypes.URL]} handleDrop={item=>console.log(item)} openIcon={folderOpenIcon} title="Accepts Anything">
+            <DNDMenueItem icon={folderIcon} dropTypes={[NativeTypes.FILE, 'media','action', NativeTypes.TEXT, NativeTypes.URL]} onDropped={action('dropped')} openIcon={folderOpenIcon} title="Accepts Anything">
 
               <DNDMenueItem icon={bulbIcon} title={'Scene3'}/>
-              <DNDMenueItem icon={folderIcon} dropTypes={[NativeTypes.FILE, 'media', NativeTypes.TEXT, NativeTypes.URL]} handleDrop={item=>console.log(item)} openIcon={folderOpenIcon} title="Nested Droppable"/>
+              <DNDMenueItem icon={folderIcon} dropTypes={[NativeTypes.FILE, 'media', NativeTypes.TEXT, NativeTypes.URL]} onDropped={item=>console.log(item)} openIcon={folderOpenIcon} title="Nested Droppable"/>
               <DNDMenueItem icon={folderIcon} openIcon={folderOpenIcon} title="Deep Folder">
                 <DNDMenueItem icon={bulbIcon} title={'Scene6'}/>
                 <DNDMenueItem icon={bulbIcon} title={'Scene7'}/>
