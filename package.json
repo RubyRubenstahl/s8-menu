@@ -1,6 +1,6 @@
 {
   "name": "s8-menu",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A flexible sidebar menu with draggable menu items.",
   "main": "./dist/index.js",
   "author": {
@@ -11,7 +11,12 @@
     "type": "git",
     "url": "https://github.com/RubyRubenstahl/s8-menu.git"
   },
-  "keywords": ["react", "menu", "react-dnd", "drag and drop"],
+  "keywords": [
+    "react",
+    "menu",
+    "react-dnd",
+    "drag and drop"
+  ],
   "license": "MIT",
   "scripts": {
     "storybook": "start-storybook -p 6006 -h 0.0.0.0",
