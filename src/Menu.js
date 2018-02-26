@@ -8,7 +8,7 @@ import styled from "styled-components";
 const MenuContainer = styled.ul`
   font-size: 12pt;
   display: flex;
-  padding-left: 12pt;
+  padding-left: 6pt;
   overflow: hidden;
   flex-direction: column;
   cursor: default;
