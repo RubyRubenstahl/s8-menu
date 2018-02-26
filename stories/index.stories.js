@@ -13,6 +13,11 @@ const folderIcon = <i style={{color:'lightblue'}} className="fas fa-folder"></i>
 const folderOpenIcon = <i style={{color:'lightblue'}} className="fas fa-folder-open"></i>;
 
 
+const StyledMenu = styled(Menu)`
+  background-color: #171834;
+  color:  #9191e5;
+`;
+
 const DragDropDecorator = (story) => {
   return (
       <DragDropContextProvider backend={HTML5Backend}>
@@ -63,11 +68,11 @@ storiesOf('Menu', module)
       </Menu>
     )
     .add('styled',() =>
-      <Menu>
+      <StyledMenu>
         <MenuItem icon={folderIcon}
                   openIcon={folderOpenIcon}
-                  backgroundColor={'#e1f1ff'}
-                  textColor={'green'}
+                  backgroundColor={'#26277d'}
+                  textColor={'white'}
                   title="Folder"
                   onItemClick={action('item click')}
                   onIconClick={action('icon click')}
@@ -78,7 +83,7 @@ storiesOf('Menu', module)
         </MenuItem>
         <MenuItem icon={bulbIcon} title={'Scene4'}/>
         <MenuItem icon={bulbIcon} title={'Scene5'}/>
-      </Menu>
+      </StyledMenu>
     )
     .add('default icon', () =>
         <Menu>
@@ -120,7 +125,6 @@ storiesOf('Drag and Drop Menu', module)
         <div>
           <Menu>
             <DNDMenuItem icon={folderIcon} dropTypes={[NativeTypes.FILE, 'media','action', NativeTypes.TEXT, NativeTypes.URL]} onDropped={action('dropped')} openIcon={folderOpenIcon} title="Accepts Anything">
-
               <DNDMenuItem icon={bulbIcon} title={'Scene3'}/>
               <DNDMenuItem icon={folderIcon} dropTypes={[NativeTypes.FILE, 'media', NativeTypes.TEXT, NativeTypes.URL]} onDropped={item=>console.log(item)} openIcon={folderOpenIcon} title="Nested Droppable"/>
               <DNDMenuItem icon={folderIcon} openIcon={folderOpenIcon} title="Deep Folder">

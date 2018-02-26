@@ -20,8 +20,8 @@ const MyMenu = ()=>
                   backgroundColor={'#e1f1ff'}
                   textColor={'green'}
                   title="Folder"
-                  onItemClick={action('item click')}
-                  onIconClick={action('icon click')}
+                  onItemClick={()=>console.log('item click')}
+                  onIconClick={()=>console.log('icon click')}
         >
           <MenuItem icon={bulbIcon} title={'Scene1'}/>
           <MenuItem icon={bulbIcon} title={'Scene2'}/>
@@ -49,7 +49,7 @@ const folderOpenIcon = <i style={{color:'lightblue'}} className="fas fa-folder-o
 const MyMenu = ()=>
     <DragDropContextProvider backend={HTML5Backend}> <!-- This should happen at the root level ofyour app -->
       <Menu>
-        <DNDMenueItem icon={folderIcon} dropTypes={[NativeTypes.FILE, 'media','action', NativeTypes.TEXT, NativeTypes.URL]} onDropped={action('dropped')} openIcon={folderOpenIcon} title="Accepts Anything">
+        <DNDMenueItem icon={folderIcon} dropTypes={[NativeTypes.FILE, 'media','action', NativeTypes.TEXT, NativeTypes.URL]} onDropped={()=>console.log('dropped')} openIcon={folderOpenIcon} title="Accepts Anything">
 
           <DNDMenueItem icon={bulbIcon} title={'Scene3'}/>
           <DNDMenueItem icon={folderIcon} dropTypes={[NativeTypes.FILE, 'media', NativeTypes.TEXT, NativeTypes.URL]} onDropped={item=>console.log(item)} openIcon={folderOpenIcon} title="Nested Droppable"/>
@@ -59,7 +59,7 @@ const MyMenu = ()=>
             <DNDMenueItem icon={bulbIcon} title={'Scene8'}/>
           </DNDMenueItem>
         </DNDMenueItem>
-        <DNDMenueItem icon={bulbIcon} dragType={''} dropTypes={NativeTypes.TEXT}  onDrop={action('Text dropped')} title={'Drop Text Here'}/>
+        <DNDMenueItem icon={bulbIcon} dragType={''} dropTypes={NativeTypes.TEXT}  onDrop={()=>console.log('Text dropped')} title={'Drop Text Here'}/>
         <DNDMenueItem icon={bulbIcon} css={'&:hover{background-color: green}'} title={'Scene4'}/>
         <DNDMenueItem icon={bulbIcon} dragType={'media'} payload={5} title={'Scene5'}/>
         <DNDMenueItem icon={bulbIcon} dragType={'action'} cuelist={5} cue={4} payload={1} title={'Scene5'}/>
@@ -88,7 +88,7 @@ const cuelistRenderer = ({title,icon, cuelist, cue, onPlay})=>
 
 const MyMenu = ()=>
     <Menu>
-        <MenuItem icon={bulbIcon} cuelist={5} cue={4} payload={1} render={cuelistRenderer} onPlay={action('playing')} title={'Scene5'}/>
+        <MenuItem icon={bulbIcon} cuelist={5} cue={4} payload={1} render={cuelistRenderer} onPlay={()=>console.log('playing')} title={'Scene5'}/>
         <MenuItem icon={bulbIcon} cuelist={5} cue={3} payload={1} render={cuelistRenderer} title={'Scene4'}/>
         <MenuItem icon={bulbIcon} cuelist={5} cue={2} payload={1} render={cuelistRenderer} title={'Scene3'}/>
         <MenuItem icon={bulbIcon} cuelist={5} cue={1} payload={1} render={cuelistRenderer} title={'Scene2'}/>

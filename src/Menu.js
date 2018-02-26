@@ -24,7 +24,7 @@ class Menu extends Component {
 
   render() {
     const {} = this.props;
-    return <MenuContainer>{this.props.children}</MenuContainer>;
+    return <MenuContainer {...this.props}>{this.props.children}</MenuContainer>;
   }
 }
 
