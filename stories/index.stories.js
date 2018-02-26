@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
-import { Menu, MenuItem, DNDMenueItem } from '../';
+import { Menu, MenuItem, DNDMenuItem } from '../src';
 const bulbIcon = <i style={{color:'#efd75f'}} className="fas fa-lightbulb"></i>;
 const folderIcon = <i style={{color:'lightblue'}} className="fas fa-folder"></i>;
 const folderOpenIcon = <i style={{color:'lightblue'}} className="fas fa-folder-open"></i>;
@@ -119,20 +119,20 @@ storiesOf('Drag and Drop Menu', module)
     .add('DND Menu', () =>
         <div>
           <Menu>
-            <DNDMenueItem icon={folderIcon} dropTypes={[NativeTypes.FILE, 'media','action', NativeTypes.TEXT, NativeTypes.URL]} onDropped={action('dropped')} openIcon={folderOpenIcon} title="Accepts Anything">
+            <DNDMenuItem icon={folderIcon} dropTypes={[NativeTypes.FILE, 'media','action', NativeTypes.TEXT, NativeTypes.URL]} onDropped={action('dropped')} openIcon={folderOpenIcon} title="Accepts Anything">
 
-              <DNDMenueItem icon={bulbIcon} title={'Scene3'}/>
-              <DNDMenueItem icon={folderIcon} dropTypes={[NativeTypes.FILE, 'media', NativeTypes.TEXT, NativeTypes.URL]} onDropped={item=>console.log(item)} openIcon={folderOpenIcon} title="Nested Droppable"/>
-              <DNDMenueItem icon={folderIcon} openIcon={folderOpenIcon} title="Deep Folder">
-                <DNDMenueItem icon={bulbIcon} title={'Scene6'}/>
-                <DNDMenueItem icon={bulbIcon} title={'Scene7'}/>
-                <DNDMenueItem icon={bulbIcon} title={'Scene8'}/>
-              </DNDMenueItem>
-            </DNDMenueItem>
-            <DNDMenueItem icon={bulbIcon} dragType={''} dropTypes={NativeTypes.TEXT}  onDrop={action('Text dropped')} title={'Drop Text Here'}/>
-            <DNDMenueItem icon={bulbIcon} css={'&:hover{background-color: green}'} title={'Scene4'}/>
-            <DNDMenueItem icon={bulbIcon} dragType={'media'} payload={5} title={'Scene5'}/>
-            <DNDMenueItem icon={bulbIcon} dragType={'action'} cuelist={5} cue={4} payload={1} title={'Scene5'}/>
+              <DNDMenuItem icon={bulbIcon} title={'Scene3'}/>
+              <DNDMenuItem icon={folderIcon} dropTypes={[NativeTypes.FILE, 'media', NativeTypes.TEXT, NativeTypes.URL]} onDropped={item=>console.log(item)} openIcon={folderOpenIcon} title="Nested Droppable"/>
+              <DNDMenuItem icon={folderIcon} openIcon={folderOpenIcon} title="Deep Folder">
+                <DNDMenuItem icon={bulbIcon} title={'Scene6'}/>
+                <DNDMenuItem icon={bulbIcon} title={'Scene7'}/>
+                <DNDMenuItem icon={bulbIcon} title={'Scene8'}/>
+              </DNDMenuItem>
+            </DNDMenuItem>
+            <DNDMenuItem icon={bulbIcon} dragType={''} dropTypes={NativeTypes.TEXT}  onDrop={action('Text dropped')} title={'Drop Text Here'}/>
+            <DNDMenuItem icon={bulbIcon} css={'&:hover{background-color: green}'} title={'Scene4'}/>
+            <DNDMenuItem icon={bulbIcon} dragType={'media'} payload={5} title={'Scene5'}/>
+            <DNDMenuItem icon={bulbIcon} dragType={'action'} cuelist={5} cue={4} payload={1} title={'Scene5'}/>
           </Menu>
         </div>
     );
@@ -153,10 +153,10 @@ storiesOf('Custom Render', module)
     .add('DND Menu', () =>
         <div>
           <Menu>
-            <DNDMenueItem icon={bulbIcon} dragType={'action'} cuelist={5} cue={4} payload={1} render={cuelistRenderer} onPlay={action('playing')} title={'Scene5'}/>
-            <DNDMenueItem icon={bulbIcon} dragType={'action'} cuelist={5} cue={3} payload={1} render={cuelistRenderer} title={'Scene4'}/>
-            <DNDMenueItem icon={bulbIcon} dragType={'action'} cuelist={5} cue={2} payload={1} render={cuelistRenderer} title={'Scene3'}/>
-            <DNDMenueItem icon={bulbIcon} dragType={'action'} cuelist={5} cue={1} payload={1} render={cuelistRenderer} title={'Scene2'}/>
+            <DNDMenuItem icon={bulbIcon} dragType={'action'} cuelist={5} cue={4} payload={1} render={cuelistRenderer} onPlay={action('playing')} title={'Scene5'}/>
+            <DNDMenuItem icon={bulbIcon} dragType={'action'} cuelist={5} cue={3} payload={1} render={cuelistRenderer} title={'Scene4'}/>
+            <DNDMenuItem icon={bulbIcon} dragType={'action'} cuelist={5} cue={2} payload={1} render={cuelistRenderer} title={'Scene3'}/>
+            <DNDMenuItem icon={bulbIcon} dragType={'action'} cuelist={5} cue={1} payload={1} render={cuelistRenderer} title={'Scene2'}/>
           </Menu>
         </div>
     );
