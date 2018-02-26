@@ -22,6 +22,8 @@ const Title = styled.span`
   flex-grow: 1;
 `;
 
+const ExtraComponents = styled.span``;
+
 const Label = styled.div`
   display: flex;
   align-items: center;
@@ -79,7 +81,7 @@ class MenuItem extends Component {
       return render(rest);
     }
 
-    const { title, children, isOver, textColor } = this.props;
+    const { title, children, isOver, textColor, extra } = this.props;
     const { open } = this.state;
 
     // TODO: Fix open folder display
@@ -115,6 +117,10 @@ class MenuItem extends Component {
           <Title {...this.props} onClick={this.handleClick}>
             {title}
           </Title>
+
+          {
+            extra && <ExtraComponents>{extra}</ExtraComponents>
+          }
         </Label>
 
         <Collapse
@@ -135,7 +141,9 @@ MenuItem.propTypes = {
   textColor: propTypes.string,
   title: propTypes.oneOfType([propTypes.string, propTypes.element]).isRequired,
   onItemClick: propTypes.func,
-  onIconClick: propTypes.func
+  onIconClick: propTypes.func,
+  extra: propTypes.element,
+  render: propTypes.func,
 };
 
 export default MenuItem;

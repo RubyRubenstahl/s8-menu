@@ -51,6 +51,17 @@ storiesOf('Menu', module)
         <MenuItem icon={bulbIcon} title={'Scene5'}/>
       </Menu>
     )
+    .add('Extra Control',() =>
+      <Menu>
+        <MenuItem icon={folderIcon}initiallyOpen={true} openIcon={folderOpenIcon} title="Folder1" extra={<a href="#">Delete</a>}>
+          <MenuItem icon={bulbIcon} title={'Scene1'}/>
+          <MenuItem icon={bulbIcon} title={'Scene2'}/>
+          <MenuItem icon={bulbIcon} title={'Scene3'}/>
+        </MenuItem>
+        <MenuItem icon={bulbIcon} title={'Scene4'}/>
+        <MenuItem icon={bulbIcon} title={'Scene5'}/>
+      </Menu>
+    )
     .add('styled',() =>
       <Menu>
         <MenuItem icon={folderIcon}

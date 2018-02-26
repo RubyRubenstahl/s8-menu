@@ -13,7 +13,7 @@ const bulbIcon = <i style={{color:'#efd75f'}} className="fas fa-lightbulb"></i>;
 const folderIcon = <i style={{color:'lightblue'}} className="fas fa-folder"></i>;
 const folderOpenIcon = <i style={{color:'lightblue'}} className="fas fa-folder-open"></i>;
 
-const menu=()=>
+const MyMenu = ()=>
       <Menu>
         <MenuItem icon={folderIcon}
                   openIcon={folderOpenIcon}
@@ -46,7 +46,7 @@ const bulbIcon = <i style={{color:'#efd75f'}} className="fas fa-lightbulb"></i>;
 const folderIcon = <i style={{color:'lightblue'}} className="fas fa-folder"></i>;
 const folderOpenIcon = <i style={{color:'lightblue'}} className="fas fa-folder-open"></i>;
 
-const menu=()=>
+const MyMenu = ()=>
     <DragDropContextProvider backend={HTML5Backend}> <!-- This should happen at the root level ofyour app -->
       <Menu>
         <DNDMenueItem icon={folderIcon} dropTypes={[NativeTypes.FILE, 'media','action', NativeTypes.TEXT, NativeTypes.URL]} onDropped={action('dropped')} openIcon={folderOpenIcon} title="Accepts Anything">
@@ -65,6 +65,34 @@ const menu=()=>
         <DNDMenueItem icon={bulbIcon} dragType={'action'} cuelist={5} cue={4} payload={1} title={'Scene5'}/>
       </Menu>
     <DragDropContextProvider backend={HTML5Backend}>
+```
+
+
+### Custom Render Function
+```JSX
+import React from 'react';
+import { Menu, MenuItem, DNDMenueItem } from s8-menu';
+
+// FontAwesome must be included in your page to use these icons
+const bulbIcon = <i style={{color:'#efd75f'}} className="fas fa-lightbulb"></i>;
+
+const cuelistRenderer = ({title,icon, cuelist, cue, onPlay})=>
+    <div style={{marginBottom:12,paddingBottom:8, display:'flex', borderBottom: '1px solid #EEE'}}>
+      <div style={{fontSize: 32, color: '#d0cc2a', paddingRight:8}} onClick={()=>onPlay()}>{icon}</div>
+      <div>
+        {title}
+         <br/>
+         <span style={{fontSize: '.8em', color: '#888'}}>QL:{cuelist}/ Q:{cue}</span>
+      </div>
+    </div>;
+
+const MyMenu = ()=>
+    <Menu>
+        <MenuItem icon={bulbIcon} cuelist={5} cue={4} payload={1} render={cuelistRenderer} onPlay={action('playing')} title={'Scene5'}/>
+        <MenuItem icon={bulbIcon} cuelist={5} cue={3} payload={1} render={cuelistRenderer} title={'Scene4'}/>
+        <MenuItem icon={bulbIcon} cuelist={5} cue={2} payload={1} render={cuelistRenderer} title={'Scene3'}/>
+        <MenuItem icon={bulbIcon} cuelist={5} cue={1} payload={1} render={cuelistRenderer} title={'Scene2'}/>
+    </Menu>
 ```
 
 

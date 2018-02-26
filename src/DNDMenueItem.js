@@ -67,7 +67,10 @@ DNDMenueItem.propTypes = {
     propTypes.string,
     propTypes.arrayOf(propTypes.string)
   ]),
-  onDropped: propTypes.func
+  onDropped: propTypes.func,
+  extra: propTypes.element,
+  render: propTypes.func,
+
 };
 
 const dragSpec = {
