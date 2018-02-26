@@ -11,13 +11,13 @@ import Collapse from "react-collapse";
 const defaultIcon = () => <span>&#x23F5;</span>;
 const defaultOpenIcon = () => <span>&#x23F7;</span>;
 
-const IconContainer = styled.span`
+export const IconContainer = styled.span`
   padding: 8px;
   display: inline-block;
   ${props => props.expandable && "cursor: pointer;"};
 `;
 
-const Title = styled.span`
+export const Title = styled.span`
   color: ${props => (props.textColor ? props.textColor : "inherit")};
   flex-grow: 1;
   display: flex;
@@ -150,3 +150,5 @@ MenuItem.propTypes = {
 };
 
 export default MenuItem;
+
+

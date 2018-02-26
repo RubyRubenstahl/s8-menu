@@ -1,7 +1,7 @@
 import Menu from './Menu';
-import MenuItem from './MenuItem';
+import MenuItem, {IconContainer, Title} from './MenuItem';
 import DNDMenuItem from './DNDMenuItem';
 
 export {Menu};
-export {MenuItem};
+export {MenuItem, IconContainer, Title};
 export {DNDMenuItem};

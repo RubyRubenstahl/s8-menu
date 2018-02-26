@@ -146,10 +146,8 @@ var MenuItem = function (_Component) {
           extra = _props2.extra;
       var open = this.state.open;
 
-      // TODO: Fix open folder display
-      // TODO: Fix reveal springyness
 
-      var hasChildren = children && children.length > 0;
+      var hasChildren = children !== undefined;
 
       var _props3 = this.props,
           icon = _props3.icon,
