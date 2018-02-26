@@ -20,6 +20,7 @@ const IconContainer = styled.span`
 const Title = styled.span`
   color: ${props => (props.textColor ? props.textColor : "inherit")};
   flex-grow: 1;
+  display: flex;
 `;
 
 const ExtraComponents = styled.span``;
@@ -43,6 +44,10 @@ const Label = styled.div`
 const MenuItemContainer = styled.li`
   display: flex;
   flex-direction: column;
+`;
+
+const IndentedMenu = styled(Menu)`
+  padding-left: 8pt;
 `;
 
 class MenuItem extends Component {
@@ -127,7 +132,7 @@ class MenuItem extends Component {
           isOpened={Boolean(open)}
           springConfig={{ stiffness: 203, damping: 29 }}
         >
-          <Menu>{children}</Menu>
+          <IndentedMenu>{children}</IndentedMenu>
         </Collapse>
       </MenuItemContainer>
     );
