@@ -89,9 +89,7 @@ class MenuItem extends Component {
     const { title, children, isOver, textColor, extra } = this.props;
     const { open } = this.state;
 
-    // TODO: Fix open folder display
-    // TODO: Fix reveal springyness
-    const hasChildren = children && children.length > 0;
+    const hasChildren = children !== undefined;
 
     let { icon, openIcon } = this.props;
     if (hasChildren && icon === undefined) {

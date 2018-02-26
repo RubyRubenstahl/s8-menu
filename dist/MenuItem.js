@@ -9,10 +9,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _templateObject = _taggedTemplateLiteral(["\n  padding: 8px;\n  display: inline-block;\n  ", ";\n"], ["\n  padding: 8px;\n  display: inline-block;\n  ", ";\n"]),
-    _templateObject2 = _taggedTemplateLiteral(["\n  color: ", ";\n  flex-grow: 1;\n"], ["\n  color: ", ";\n  flex-grow: 1;\n"]),
+    _templateObject2 = _taggedTemplateLiteral(["\n  color: ", ";\n  flex-grow: 1;\n  display: flex;\n"], ["\n  color: ", ";\n  flex-grow: 1;\n  display: flex;\n"]),
     _templateObject3 = _taggedTemplateLiteral([""], [""]),
     _templateObject4 = _taggedTemplateLiteral(["\n  display: flex;\n  align-items: center;\n  transition: all 0.2s ease-in-out;\n  outline: ", ";\n  outline-offset: -2pt;\n  ", ";\n"], ["\n  display: flex;\n  align-items: center;\n  transition: all 0.2s ease-in-out;\n  outline: ", ";\n  outline-offset: -2pt;\n  ", ";\n"]),
-    _templateObject5 = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: column;\n"], ["\n  display: flex;\n  flex-direction: column;\n"]);
+    _templateObject5 = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: column;\n"], ["\n  display: flex;\n  flex-direction: column;\n"]),
+    _templateObject6 = _taggedTemplateLiteral(["\n  padding-left: 8pt;\n"], ["\n  padding-left: 8pt;\n"]);
 
 var _react = require("react");
 
@@ -85,6 +86,8 @@ var Label = _styledComponents2.default.div(_templateObject4, function (props) {
 });
 
 var MenuItemContainer = _styledComponents2.default.li(_templateObject5);
+
+var IndentedMenu = (0, _styledComponents2.default)(_Menu2.default)(_templateObject6);
 
 var MenuItem = function (_Component) {
   _inherits(MenuItem, _Component);
@@ -202,7 +205,7 @@ var MenuItem = function (_Component) {
             springConfig: { stiffness: 203, damping: 29 }
           },
           _react2.default.createElement(
-            _Menu2.default,
+            IndentedMenu,
             null,
             children
           )
