@@ -1,21 +1,24 @@
 {
   "name": "s8-menu",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A flexible sidebar menu with draggable menu items.",
-  "main": "index.js",
-  "author": "Ruby Rubenstahl",
+  "main": "./src/index.js",
+  "author": {
+    "name": "Ruby Rubenstahl",
+    "email": "ruby@ruby-lighting.com"
+  },
   "license": "MIT",
   "scripts": {
     "storybook": "start-storybook -p 6006 -h 0.0.0.0",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "build": "webpack"
   },
   "dependencies": {
     "lodash.isfunction": "^3.0.9",
-    "react": "^16.2.0",
     "react-collapse": "^4.0.3",
     "react-dnd": "^2.5.4",
     "react-dnd-html5-backend": "^2.5.4",
-    "react-dom": "^16.2.0",
+
     "react-motion": "^0.5.2",
     "styled-components": "^3.1.6"
   },
@@ -26,5 +29,8 @@
     "@storybook/react": "^3.3.14",
     "babel-core": "^6.26.0"
   },
-  "peerDependencies": {}
+  "peerDependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  }
 }
