@@ -1854,7 +1854,7 @@ var Menu = function (_Component) {
 
       return _react2.default.createElement(
         MenuContainer,
-        null,
+        this.props,
         this.props.children
       );
     }
@@ -6034,6 +6034,7 @@ function isValidType(type, allowArray) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.DNDMenuItem = exports.MenuItem = exports.Menu = undefined;
 
 var _Menu = __webpack_require__(42);
 
@@ -6043,13 +6044,15 @@ var _MenuItem = __webpack_require__(46);
 
 var _MenuItem2 = _interopRequireDefault(_MenuItem);
 
-var _DNDMenueItem = __webpack_require__(94);
+var _DNDMenuItem = __webpack_require__(94);
 
-var _DNDMenueItem2 = _interopRequireDefault(_DNDMenueItem);
+var _DNDMenuItem2 = _interopRequireDefault(_DNDMenuItem);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = { Menu: _Menu2.default, MenuItem: _MenuItem2.default, DNDMenueItem: _DNDMenueItem2.default };
+exports.Menu = _Menu2.default;
+exports.MenuItem = _MenuItem2.default;
+exports.DNDMenuItem = _DNDMenuItem2.default;
 
 /***/ }),
 /* 75 */
