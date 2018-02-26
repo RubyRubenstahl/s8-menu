@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(["\n  font-size: 12pt;\n  display: flex;\n  padding-left: 12pt;\n  overflow: hidden;\n  flex-direction: column;\n  cursor: default;\n  user-select: none;\n  ", ";\n"], ["\n  font-size: 12pt;\n  display: flex;\n  padding-left: 12pt;\n  overflow: hidden;\n  flex-direction: column;\n  cursor: default;\n  user-select: none;\n  ", ";\n"]);
+var _templateObject = _taggedTemplateLiteral(["\n  font-size: 12pt;\n  display: flex;\n  padding-left: 6pt;\n  overflow: hidden;\n  flex-direction: column;\n  cursor: default;\n  user-select: none;\n  ", ";\n"], ["\n  font-size: 12pt;\n  display: flex;\n  padding-left: 6pt;\n  overflow: hidden;\n  flex-direction: column;\n  cursor: default;\n  user-select: none;\n  ", ";\n"]);
 
 var _react = require("react");
 
