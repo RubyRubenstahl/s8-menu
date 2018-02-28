@@ -1,6 +1,6 @@
 {
   "name": "s8-menu",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "A flexible sidebar menu with draggable menu items.",
   "main": "./dist/index.js",
   "author": {
