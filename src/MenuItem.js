@@ -7,7 +7,7 @@ import styled from "styled-components";
 import isFunction from "lodash.isfunction";
 import Menu from "./Menu";
 import Collapse from "react-collapse";
-
+import get from 'lodash.get';
 const defaultIcon = () => <span>&#x23F5;</span>;
 const defaultOpenIcon = () => <span>&#x23F7;</span>;
 
@@ -61,9 +61,13 @@ class MenuItem extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
+    const oldChildren = get(this, 'props.children');
+    const newChildren = get(nextProps, 'children');
+
+    if (oldChildren.length !== newChildren.leading) return true;
     if (this.state.open !== nextState.open) return true;
     if (this.props.isOver !== nextProps.isOver) return true;
-    if(this.props.children.length !== nextProps.children.length) return true;
+
     return false;
   }
 

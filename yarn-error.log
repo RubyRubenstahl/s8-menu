@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\Mike\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add react-dnd-html5-backend
+  C:\Program Files\nodejs\node.exe C:\Users\Mike\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add lodash.get
 
 PATH: 
   C:\Program Files\Docker\Docker\Resources\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\nodejs\;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Git\cmd;D:\android\platform-tools;d:\mongodb\bin;D:\python36\Scripts\;D:\python36\;C:\Ruby193\bin;C:\Ruby22\bin;C:\Users\Mike\AppData\Local\atom\bin;C:\Program Files (x86)\Microsoft VS Code\bin;C:\Users\Mike\AppData\Local\.meteor\;C:\Users\Mike\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Git\bin;C:\Windows\System32\;C:\Program Files (x86)\Nmap;./node_modules/.bin/builder;C:\Users\Mike\AppData\Roaming\npm;
@@ -16,21 +16,33 @@ Platform:
 npm manifest: 
   {
     "name": "s8-menu",
-    "version": "0.0.1",
+    "version": "0.0.12",
     "description": "A flexible sidebar menu with draggable menu items.",
-    "main": "index.js",
-    "author": "Ruby Rubenstahl",
+    "main": "./dist/index.js",
+    "author": {
+      "name": "Ruby Rubenstahl",
+      "email": "ruby@ruby-lighting.com"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/RubyRubenstahl/s8-menu.git"
+    },
+    "keywords": [
+      "react",
+      "menu",
+      "react-dnd",
+      "drag and drop"
+    ],
     "license": "MIT",
     "scripts": {
-      "storybook": "start-storybook -p 6006",
-      "build-storybook": "build-storybook"
+      "storybook": "start-storybook -p 6006 -h 0.0.0.0",
+      "build-storybook": "build-storybook",
+      "build": "babel src --presets babel-preset-es2015 --out-dir dist",
+      "prepublish": "npm run build"
     },
     "dependencies": {
       "lodash.isfunction": "^3.0.9",
-      "react": "^16.2.0",
       "react-collapse": "^4.0.3",
-      "react-dnd": "^2.5.4",
-      "react-dom": "^16.2.0",
       "react-motion": "^0.5.2",
       "styled-components": "^3.1.6"
     },
@@ -39,9 +51,21 @@ npm manifest:
       "@storybook/addon-links": "^3.3.14",
       "@storybook/addons": "^3.3.14",
       "@storybook/react": "^3.3.14",
-      "babel-core": "^6.26.0"
+      "babel-cli": "6",
+      "babel-core": "^6.26.0",
+      "babel-preset-es2015": "6",
+      "prop-types": "^15.6.0",
+      "react": "^16.2.0",
+      "react-dnd": "^2.5.4",
+      "react-dnd-html5-backend": "^2.5.4",
+      "react-dom": "^16.2.0"
     },
-    "peerDependencies": {}
+    "peerDependencies": {
+      "react": "^16.2.0",
+      "react-dnd": "^2.5.4",
+      "react-dnd-html5-backend": "^2.5.4",
+      "react-dom": "^16.2.0"
+    }
   }
 
 yarn manifest: 
@@ -299,8 +323,8 @@ Lockfile:
       json-schema-traverse "^0.3.0"
   
   ajv@^6.1.0:
-    version "6.1.1"
-    resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.1.1.tgz#978d597fbc2b7d0e5a5c3ddeb149a682f2abfa0e"
+    version "6.2.0"
+    resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.2.0.tgz#afac295bbaa0152449e522742e4547c1ae9328d2"
     dependencies:
       fast-deep-equal "^1.0.0"
       fast-json-stable-stringify "^2.0.0"
@@ -394,16 +418,16 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/array-unique/-/array-unique-0.2.1.tgz#a1d97ccafcbc2625cc70fadceb36a50c58b01a53"
   
   array.prototype.flatmap@^1.2.0:
-    version "1.2.0"
-    resolved "https://registry.yarnpkg.com/array.prototype.flatmap/-/array.prototype.flatmap-1.2.0.tgz#279f7ed4eeb1cedfe5515e92e63cfb40ca15b74b"
+    version "1.2.1"
+    resolved "https://registry.yarnpkg.com/array.prototype.flatmap/-/array.prototype.flatmap-1.2.1.tgz#3103cd4826ef90019c9b0a4839b2535fa6faf4e9"
     dependencies:
       define-properties "^1.1.2"
       es-abstract "^1.10.0"
       function-bind "^1.1.1"
   
   array.prototype.flatten@^1.2.0:
-    version "1.2.0"
-    resolved "https://registry.yarnpkg.com/array.prototype.flatten/-/array.prototype.flatten-1.2.0.tgz#e46fb18954f8796381a73755e122570647984be3"
+    version "1.2.1"
+    resolved "https://registry.yarnpkg.com/array.prototype.flatten/-/array.prototype.flatten-1.2.1.tgz#a77ae1b64524ce373b137fade324d12040d3c680"
     dependencies:
       define-properties "^1.1.2"
       es-abstract "^1.10.0"
@@ -494,6 +518,27 @@ Lockfile:
   aws4@^1.2.1, aws4@^1.6.0:
     version "1.6.0"
     resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.6.0.tgz#83ef5ca860b2b32e4a0deedee8c771b9db57471e"
+  
+  babel-cli@6:
+    version "6.26.0"
+    resolved "https://registry.yarnpkg.com/babel-cli/-/babel-cli-6.26.0.tgz#502ab54874d7db88ad00b887a06383ce03d002f1"
+    dependencies:
+      babel-core "^6.26.0"
+      babel-polyfill "^6.26.0"
+      babel-register "^6.26.0"
+      babel-runtime "^6.26.0"
+      commander "^2.11.0"
+      convert-source-map "^1.5.0"
+      fs-readdir-recursive "^1.0.0"
+      glob "^7.1.2"
+      lodash "^4.17.4"
+      output-file-sync "^1.1.2"
+      path-is-absolute "^1.0.1"
+      slash "^1.0.0"
+      source-map "^0.5.6"
+      v8flags "^2.1.1"
+    optionalDependencies:
+      chokidar "^1.6.1"
   
   babel-code-frame@^6.26.0:
     version "6.26.0"
@@ -695,8 +740,8 @@ Lockfile:
       babel-template "^6.24.1"
   
   babel-loader@^7.1.2:
-    version "7.1.2"
-    resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-7.1.2.tgz#f6cbe122710f1aa2af4d881c6d5b54358ca24126"
+    version "7.1.3"
+    resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-7.1.3.tgz#ff5b440da716e9153abb946251a9ab7670037b16"
     dependencies:
       find-cache-dir "^1.0.0"
       loader-utils "^1.0.2"
@@ -913,7 +958,7 @@ Lockfile:
     dependencies:
       babel-runtime "^6.22.0"
   
-  babel-plugin-transform-es2015-block-scoping@^6.23.0:
+  babel-plugin-transform-es2015-block-scoping@^6.23.0, babel-plugin-transform-es2015-block-scoping@^6.24.1:
     version "6.26.0"
     resolved "https://registry.yarnpkg.com/babel-plugin-transform-es2015-block-scoping/-/babel-plugin-transform-es2015-block-scoping-6.26.0.tgz#d70f5299c1308d05c12f463813b0a09e73b1895f"
     dependencies:
@@ -923,7 +968,7 @@ Lockfile:
       babel-types "^6.26.0"
       lodash "^4.17.4"
   
-  babel-plugin-transform-es2015-classes@^6.23.0:
+  babel-plugin-transform-es2015-classes@^6.23.0, babel-plugin-transform-es2015-classes@^6.24.1:
     version "6.24.1"
     resolved "https://registry.yarnpkg.com/babel-plugin-transform-es2015-classes/-/babel-plugin-transform-es2015-classes-6.24.1.tgz#5a4c58a50c9c9461e564b4b2a3bfabc97a2584db"
     dependencies:
@@ -937,33 +982,33 @@ Lockfile:
       babel-traverse "^6.24.1"
       babel-types "^6.24.1"
   
-  babel-plugin-transform-es2015-computed-properties@^6.22.0:
+  babel-plugin-transform-es2015-computed-properties@^6.22.0, babel-plugin-transform-es2015-computed-properties@^6.24.1:
     version "6.24.1"
     resolved "https://registry.yarnpkg.com/babel-plugin-transform-es2015-computed-properties/-/babel-plugin-transform-es2015-computed-properties-6.24.1.tgz#6fe2a8d16895d5634f4cd999b6d3480a308159b3"
     dependencies:
       babel-runtime "^6.22.0"
       babel-template "^6.24.1"
   
-  babel-plugin-transform-es2015-destructuring@6.23.0, babel-plugin-transform-es2015-destructuring@^6.23.0:
+  babel-plugin-transform-es2015-destructuring@6.23.0, babel-plugin-transform-es2015-destructuring@^6.22.0, babel-plugin-transform-es2015-destructuring@^6.23.0:
     version "6.23.0"
     resolved "https://registry.yarnpkg.com/babel-plugin-transform-es2015-destructuring/-/babel-plugin-transform-es2015-destructuring-6.23.0.tgz#997bb1f1ab967f682d2b0876fe358d60e765c56d"
     dependencies:
       babel-runtime "^6.22.0"
   
-  babel-plugin-transform-es2015-duplicate-keys@^6.22.0:
+  babel-plugin-transform-es2015-duplicate-keys@^6.22.0, babel-plugin-transform-es2015-duplicate-keys@^6.24.1:
     version "6.24.1"
     resolved "https://registry.yarnpkg.com/babel-plugin-transform-es2015-duplicate-keys/-/babel-plugin-transform-es2015-duplicate-keys-6.24.1.tgz#73eb3d310ca969e3ef9ec91c53741a6f1576423e"
     dependencies:
       babel-runtime "^6.22.0"
       babel-types "^6.24.1"
   
-  babel-plugin-transform-es2015-for-of@^6.23.0:
+  babel-plugin-transform-es2015-for-of@^6.22.0, babel-plugin-transform-es2015-for-of@^6.23.0:
     version "6.23.0"
     resolved "https://registry.yarnpkg.com/babel-plugin-transform-es2015-for-of/-/babel-plugin-transform-es2015-for-of-6.23.0.tgz#f47c95b2b613df1d3ecc2fdb7573623c75248691"
     dependencies:
       babel-runtime "^6.22.0"
   
-  babel-plugin-transform-es2015-function-name@^6.22.0:
+  babel-plugin-transform-es2015-function-name@^6.22.0, babel-plugin-transform-es2015-function-name@^6.24.1:
     version "6.24.1"
     resolved "https://registry.yarnpkg.com/babel-plugin-transform-es2015-function-name/-/babel-plugin-transform-es2015-function-name-6.24.1.tgz#834c89853bc36b1af0f3a4c5dbaa94fd8eacaa8b"
     dependencies:
@@ -994,7 +1039,7 @@ Lockfile:
       babel-template "^6.26.0"
       babel-types "^6.26.0"
   
-  babel-plugin-transform-es2015-modules-systemjs@^6.23.0:
+  babel-plugin-transform-es2015-modules-systemjs@^6.23.0, babel-plugin-transform-es2015-modules-systemjs@^6.24.1:
     version "6.24.1"
     resolved "https://registry.yarnpkg.com/babel-plugin-transform-es2015-modules-systemjs/-/babel-plugin-transform-es2015-modules-systemjs-6.24.1.tgz#ff89a142b9119a906195f5f106ecf305d9407d23"
     dependencies:
@@ -1002,7 +1047,7 @@ Lockfile:
       babel-runtime "^6.22.0"
       babel-template "^6.24.1"
   
-  babel-plugin-transform-es2015-modules-umd@^6.23.0:
+  babel-plugin-transform-es2015-modules-umd@^6.23.0, babel-plugin-transform-es2015-modules-umd@^6.24.1:
     version "6.24.1"
     resolved "https://registry.yarnpkg.com/babel-plugin-transform-es2015-modules-umd/-/babel-plugin-transform-es2015-modules-umd-6.24.1.tgz#ac997e6285cd18ed6176adb607d602344ad38468"
     dependencies:
@@ -1010,14 +1055,14 @@ Lockfile:
       babel-runtime "^6.22.0"
       babel-template "^6.24.1"
   
-  babel-plugin-transform-es2015-object-super@^6.22.0:
+  babel-plugin-transform-es2015-object-super@^6.22.0, babel-plugin-transform-es2015-object-super@^6.24.1:
     version "6.24.1"
     resolved "https://registry.yarnpkg.com/babel-plugin-transform-es2015-object-super/-/babel-plugin-transform-es2015-object-super-6.24.1.tgz#24cef69ae21cb83a7f8603dad021f572eb278f8d"
     dependencies:
       babel-helper-replace-supers "^6.24.1"
       babel-runtime "^6.22.0"
   
-  babel-plugin-transform-es2015-parameters@^6.23.0:
+  babel-plugin-transform-es2015-parameters@^6.23.0, babel-plugin-transform-es2015-parameters@^6.24.1:
     version "6.24.1"
     resolved "https://registry.yarnpkg.com/babel-plugin-transform-es2015-parameters/-/babel-plugin-transform-es2015-parameters-6.24.1.tgz#57ac351ab49caf14a97cd13b09f66fdf0a625f2b"
     dependencies:
@@ -1028,7 +1073,7 @@ Lockfile:
       babel-traverse "^6.24.1"
       babel-types "^6.24.1"
   
-  babel-plugin-transform-es2015-shorthand-properties@^6.22.0:
+  babel-plugin-transform-es2015-shorthand-properties@^6.22.0, babel-plugin-transform-es2015-shorthand-properties@^6.24.1:
     version "6.24.1"
     resolved "https://registry.yarnpkg.com/babel-plugin-transform-es2015-shorthand-properties/-/babel-plugin-transform-es2015-shorthand-properties-6.24.1.tgz#24f875d6721c87661bbd99a4622e51f14de38aa0"
     dependencies:
@@ -1041,7 +1086,7 @@ Lockfile:
     dependencies:
       babel-runtime "^6.22.0"
   
-  babel-plugin-transform-es2015-sticky-regex@^6.22.0:
+  babel-plugin-transform-es2015-sticky-regex@^6.22.0, babel-plugin-transform-es2015-sticky-regex@^6.24.1:
     version "6.24.1"
     resolved "https://registry.yarnpkg.com/babel-plugin-transform-es2015-sticky-regex/-/babel-plugin-transform-es2015-sticky-regex-6.24.1.tgz#00c1cdb1aca71112cdf0cf6126c2ed6b457ccdbc"
     dependencies:
@@ -1055,13 +1100,13 @@ Lockfile:
     dependencies:
       babel-runtime "^6.22.0"
   
-  babel-plugin-transform-es2015-typeof-symbol@^6.23.0:
+  babel-plugin-transform-es2015-typeof-symbol@^6.22.0, babel-plugin-transform-es2015-typeof-symbol@^6.23.0:
     version "6.23.0"
     resolved "https://registry.yarnpkg.com/babel-plugin-transform-es2015-typeof-symbol/-/babel-plugin-transform-es2015-typeof-symbol-6.23.0.tgz#dec09f1cddff94b52ac73d505c84df59dcceb372"
     dependencies:
       babel-runtime "^6.22.0"
   
-  babel-plugin-transform-es2015-unicode-regex@^6.22.0:
+  babel-plugin-transform-es2015-unicode-regex@^6.22.0, babel-plugin-transform-es2015-unicode-regex@^6.24.1:
     version "6.24.1"
     resolved "https://registry.yarnpkg.com/babel-plugin-transform-es2015-unicode-regex/-/babel-plugin-transform-es2015-unicode-regex-6.24.1.tgz#d38b12f42ea7323f729387f18a7c5ae1faeb35e9"
     dependencies:
@@ -1161,7 +1206,7 @@ Lockfile:
       babel-plugin-syntax-jsx "^6.8.0"
       babel-runtime "^6.22.0"
   
-  babel-plugin-transform-regenerator@6.26.0, babel-plugin-transform-regenerator@^6.22.0, babel-plugin-transform-regenerator@^6.26.0:
+  babel-plugin-transform-regenerator@6.26.0, babel-plugin-transform-regenerator@^6.22.0, babel-plugin-transform-regenerator@^6.24.1, babel-plugin-transform-regenerator@^6.26.0:
     version "6.26.0"
     resolved "https://registry.yarnpkg.com/babel-plugin-transform-regenerator/-/babel-plugin-transform-regenerator-6.26.0.tgz#e0703696fbde27f0a3efcacf8b4dca2f7b3a8f2f"
     dependencies:
@@ -1206,6 +1251,14 @@ Lockfile:
     version "6.9.0"
     resolved "https://registry.yarnpkg.com/babel-plugin-transform-undefined-to-void/-/babel-plugin-transform-undefined-to-void-6.9.0.tgz#eb5db0554caffe9ded0206468ec0c6c3b332b9d2"
   
+  babel-polyfill@^6.26.0:
+    version "6.26.0"
+    resolved "https://registry.yarnpkg.com/babel-polyfill/-/babel-polyfill-6.26.0.tgz#379937abc67d7895970adc621f284cd966cf2153"
+    dependencies:
+      babel-runtime "^6.26.0"
+      core-js "^2.5.0"
+      regenerator-runtime "^0.10.5"
+  
   babel-preset-env@1.6.1, babel-preset-env@^1.6.1:
     version "1.6.1"
     resolved "https://registry.yarnpkg.com/babel-preset-env/-/babel-preset-env-1.6.1.tgz#a18b564cc9b9afdf4aae57ae3c1b0d99188e6f48"
@@ -1240,6 +1293,35 @@ Lockfile:
       browserslist "^2.1.2"
       invariant "^2.2.2"
       semver "^5.3.0"
+  
+  babel-preset-es2015@6:
+    version "6.24.1"
+    resolved "https://registry.yarnpkg.com/babel-preset-es2015/-/babel-preset-es2015-6.24.1.tgz#d44050d6bc2c9feea702aaf38d727a0210538939"
+    dependencies:
+      babel-plugin-check-es2015-constants "^6.22.0"
+      babel-plugin-transform-es2015-arrow-functions "^6.22.0"
+      babel-plugin-transform-es2015-block-scoped-functions "^6.22.0"
+      babel-plugin-transform-es2015-block-scoping "^6.24.1"
+      babel-plugin-transform-es2015-classes "^6.24.1"
+      babel-plugin-transform-es2015-computed-properties "^6.24.1"
+      babel-plugin-transform-es2015-destructuring "^6.22.0"
+      babel-plugin-transform-es2015-duplicate-keys "^6.24.1"
+      babel-plugin-transform-es2015-for-of "^6.22.0"
+      babel-plugin-transform-es2015-function-name "^6.24.1"
+      babel-plugin-transform-es2015-literals "^6.22.0"
+      babel-plugin-transform-es2015-modules-amd "^6.24.1"
+      babel-plugin-transform-es2015-modules-commonjs "^6.24.1"
+      babel-plugin-transform-es2015-modules-systemjs "^6.24.1"
+      babel-plugin-transform-es2015-modules-umd "^6.24.1"
+      babel-plugin-transform-es2015-object-super "^6.24.1"
+      babel-plugin-transform-es2015-parameters "^6.24.1"
+      babel-plugin-transform-es2015-shorthand-properties "^6.24.1"
+      babel-plugin-transform-es2015-spread "^6.22.0"
+      babel-plugin-transform-es2015-sticky-regex "^6.24.1"
+      babel-plugin-transform-es2015-template-literals "^6.22.0"
+      babel-plugin-transform-es2015-typeof-symbol "^6.22.0"
+      babel-plugin-transform-es2015-unicode-regex "^6.24.1"
+      babel-plugin-transform-regenerator "^6.24.1"
   
   babel-preset-flow@^6.23.0:
     version "6.23.0"
@@ -1687,7 +1769,7 @@ Lockfile:
       escape-string-regexp "^1.0.5"
       supports-color "^5.2.0"
   
-  chokidar@^1.7.0:
+  chokidar@^1.6.1, chokidar@^1.7.0:
     version "1.7.0"
     resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-1.7.0.tgz#798e689778151c8076b4b360e5edd28cda2bb468"
     dependencies:
@@ -1805,7 +1887,7 @@ Lockfile:
     dependencies:
       delayed-stream "~1.0.0"
   
-  commander@2.14.x, commander@^2.12.2, commander@^2.9.0, commander@~2.14.1:
+  commander@2.14.x, commander@^2.11.0, commander@^2.12.2, commander@^2.9.0, commander@~2.14.1:
     version "2.14.1"
     resolved "https://registry.yarnpkg.com/commander/-/commander-2.14.1.tgz#2235123e37af8ca3c65df45b026dbd357b01b9aa"
   
@@ -2345,7 +2427,7 @@ Lockfile:
     version "1.1.1"
     resolved "https://registry.yarnpkg.com/entities/-/entities-1.1.1.tgz#6e5c2d0a5621b5dadaecef80b90edfb5cd7772f0"
   
-  errno@^0.1.3, errno@^0.1.4:
+  errno@^0.1.3, errno@~0.1.7:
     version "0.1.7"
     resolved "https://registry.yarnpkg.com/errno/-/errno-0.1.7.tgz#4684d71779ad39af177e3f007996f7c67c852618"
     dependencies:
@@ -2472,11 +2554,10 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/esprima/-/esprima-3.1.3.tgz#fdca51cee6133895e3c88d535ce49dbff62a4633"
   
   esrecurse@^4.1.0:
-    version "4.2.0"
-    resolved "https://registry.yarnpkg.com/esrecurse/-/esrecurse-4.2.0.tgz#fa9568d98d3823f9a41d91e902dcab9ea6e5b163"
+    version "4.2.1"
+    resolved "https://registry.yarnpkg.com/esrecurse/-/esrecurse-4.2.1.tgz#007a3b9fdbc2b3bb87e4879ea19c92fdbd3942cf"
     dependencies:
       estraverse "^4.1.0"
-      object-assign "^4.0.1"
   
   estraverse@^4.1.0, estraverse@^4.1.1:
     version "4.2.0"
@@ -2586,8 +2667,8 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/extsprintf/-/extsprintf-1.3.0.tgz#96918440e3041a7a414f8c52e3c574eb3c3e1e05"
   
   fast-deep-equal@^1.0.0:
-    version "1.0.0"
-    resolved "https://registry.yarnpkg.com/fast-deep-equal/-/fast-deep-equal-1.0.0.tgz#96256a3bc975595eb36d82e9929d060d893439ff"
+    version "1.1.0"
+    resolved "https://registry.yarnpkg.com/fast-deep-equal/-/fast-deep-equal-1.1.0.tgz#c053477817c86b51daa853c81e059b733d023614"
   
   fast-json-stable-stringify@^2.0.0:
     version "2.0.0"
@@ -2719,6 +2800,10 @@ Lockfile:
     dependencies:
       inherits "^2.0.1"
       readable-stream "^2.0.0"
+  
+  fs-readdir-recursive@^1.0.0:
+    version "1.1.0"
+    resolved "https://registry.yarnpkg.com/fs-readdir-recursive/-/fs-readdir-recursive-1.1.0.tgz#e32fc030a2ccee44a6b5371308da54be0b397d27"
   
   fs-write-stream-atomic@^1.0.8:
     version "1.0.10"
@@ -2857,7 +2942,7 @@ Lockfile:
     version "9.18.0"
     resolved "https://registry.yarnpkg.com/globals/-/globals-9.18.0.tgz#aa3896b3e69b487f17e31ed2143d69a8e30c2d8a"
   
-  graceful-fs@^4.1.11, graceful-fs@^4.1.2:
+  graceful-fs@^4.1.11, graceful-fs@^4.1.2, graceful-fs@^4.1.4:
     version "4.1.11"
     resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.11.tgz#0e8bdfe4d1ddb8854d64e04ea7c00e2a026e5658"
   
@@ -3969,6 +4054,14 @@ Lockfile:
       os-homedir "^1.0.0"
       os-tmpdir "^1.0.0"
   
+  output-file-sync@^1.1.2:
+    version "1.1.2"
+    resolved "https://registry.yarnpkg.com/output-file-sync/-/output-file-sync-1.1.2.tgz#d0a33eefe61a205facb90092e826598d5245ce76"
+    dependencies:
+      graceful-fs "^4.1.4"
+      mkdirp "^0.5.1"
+      object-assign "^4.1.0"
+  
   p-finally@^1.0.0:
     version "1.0.0"
     resolved "https://registry.yarnpkg.com/p-finally/-/p-finally-1.0.0.tgz#3fbcfb15b899a44123b34b6dcc18b724336a2cae"
@@ -4189,8 +4282,8 @@ Lockfile:
       object-assign "^4.1.0"
   
   postcss-loader@^2.0.9:
-    version "2.1.0"
-    resolved "https://registry.yarnpkg.com/postcss-loader/-/postcss-loader-2.1.0.tgz#038c2d6d59753fef4667827fd3ae03f5dc5e6a7a"
+    version "2.1.1"
+    resolved "https://registry.yarnpkg.com/postcss-loader/-/postcss-loader-2.1.1.tgz#208935af3b1d65e1abb1a870a912dd12e7b36895"
     dependencies:
       loader-utils "^1.1.0"
       postcss "^6.0.0"
@@ -4577,6 +4670,12 @@ Lockfile:
     dependencies:
       prop-types "^15.5.8"
   
+  react-dnd-html5-backend@^2.5.4:
+    version "2.5.4"
+    resolved "https://registry.yarnpkg.com/react-dnd-html5-backend/-/react-dnd-html5-backend-2.5.4.tgz#974ad083f67b12d56977a5b171f5ffeb29d78352"
+    dependencies:
+      lodash "^4.2.0"
+  
   react-dnd@^2.5.4:
     version "2.5.4"
     resolved "https://registry.yarnpkg.com/react-dnd/-/react-dnd-2.5.4.tgz#0b6dc5e9d0dfc2909f4f4fe736e5534f3afd1bd9"
@@ -4797,6 +4896,10 @@ Lockfile:
   regenerate@^1.2.1:
     version "1.3.3"
     resolved "https://registry.yarnpkg.com/regenerate/-/regenerate-1.3.3.tgz#0c336d3980553d755c39b586ae3b20aa49c82b7f"
+  
+  regenerator-runtime@^0.10.5:
+    version "0.10.5"
+    resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.10.5.tgz#336c3efc1220adcedda2c9fab67b5a7955a33658"
   
   regenerator-runtime@^0.11.0:
     version "0.11.1"
@@ -5479,8 +5582,8 @@ Lockfile:
       webpack-sources "^1.0.1"
   
   uglifyjs-webpack-plugin@^1.1.6:
-    version "1.2.1"
-    resolved "https://registry.yarnpkg.com/uglifyjs-webpack-plugin/-/uglifyjs-webpack-plugin-1.2.1.tgz#e72ae01a31028b198b4631ec98da997dc3386fa2"
+    version "1.2.2"
+    resolved "https://registry.yarnpkg.com/uglifyjs-webpack-plugin/-/uglifyjs-webpack-plugin-1.2.2.tgz#e7516d4367afdb715c3847841eb46f94c45ca2b9"
     dependencies:
       cacache "^10.0.1"
       find-cache-dir "^1.0.0"
@@ -5550,6 +5653,10 @@ Lockfile:
       punycode "1.3.2"
       querystring "0.2.0"
   
+  user-home@^1.1.1:
+    version "1.1.1"
+    resolved "https://registry.yarnpkg.com/user-home/-/user-home-1.1.1.tgz#2b5be23a32b63a7c9deb8d0f28d485724a3df190"
+  
   util-deprecate@^1.0.2, util-deprecate@~1.0.1:
     version "1.0.2"
     resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
@@ -5575,6 +5682,12 @@ Lockfile:
   uuid@^3.0.0, uuid@^3.1.0:
     version "3.2.1"
     resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.2.1.tgz#12c528bb9d58d0b9265d9a2f6f0fe8be17ff1f14"
+  
+  v8flags@^2.1.1:
+    version "2.1.1"
+    resolved "https://registry.yarnpkg.com/v8flags/-/v8flags-2.1.1.tgz#aab1a1fa30d45f88dd321148875ac02c0b55e5b4"
+    dependencies:
+      user-home "^1.1.1"
   
   validate-npm-package-license@^3.0.1:
     version "3.0.1"
@@ -5718,11 +5831,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/wordwrap/-/wordwrap-0.0.2.tgz#b79669bb42ecb409f83d583cad52ca17eaa1643f"
   
   worker-farm@^1.5.2:
-    version "1.5.2"
-    resolved "https://registry.yarnpkg.com/worker-farm/-/worker-farm-1.5.2.tgz#32b312e5dc3d5d45d79ef44acc2587491cd729ae"
+    version "1.5.4"
+    resolved "https://registry.yarnpkg.com/worker-farm/-/worker-farm-1.5.4.tgz#4debbe46b40edefcc717ebde74a90b1ae1e909a1"
     dependencies:
-      errno "^0.1.4"
-      xtend "^4.0.1"
+      errno "~0.1.7"
+      xtend "~4.0.1"
   
   wrap-ansi@^2.0.0:
     version "2.1.0"
@@ -5751,7 +5864,7 @@ Lockfile:
     version "1.0.0"
     resolved "https://registry.yarnpkg.com/xml-char-classes/-/xml-char-classes-1.0.0.tgz#64657848a20ffc5df583a42ad8a277b4512bbc4d"
   
-  xtend@^4.0.0, xtend@^4.0.1, xtend@~4.0.1:
+  xtend@^4.0.0, xtend@~4.0.1:
     version "4.0.1"
     resolved "https://registry.yarnpkg.com/xtend/-/xtend-4.0.1.tgz#a5c6d532be656e23db820efb943a1f04998d63af"
   
@@ -5801,4 +5914,4 @@ Lockfile:
       window-size "0.1.0"
 
 Trace: 
-  Error: EPERM: operation not permitted, unlink 'D:\dev\Projects\s8-menu\node_modules\@storybook\addon-actions\node_modules\.bin'
+  Error: EPERM: operation not permitted, unlink 'D:\dev\Projects\s8-menu\node_modules\.cache\react-storybook'
