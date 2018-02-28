@@ -64,7 +64,7 @@ class MenuItem extends Component {
     const oldChildren = get(this, 'props.children') || [];
     const newChildren = get(nextProps, 'children') || [];
 
-    if (oldChildren.length !== newChildren.leading) return true;
+    if (oldChildren && oldChildren.length !== newChildren.length) return true;
     if (this.state.open !== nextState.open) return true;
     if (this.props.isOver !== nextProps.isOver) return true;
 

@@ -112,8 +112,8 @@ var MenuItem = function (_Component) {
   _createClass(MenuItem, [{
     key: "shouldComponentUpdate",
     value: function shouldComponentUpdate(nextProps, nextState) {
-      var oldChildren = (0, _lodash4.default)(this, 'props.children');
-      var newChildren = (0, _lodash4.default)(nextProps, 'children');
+      var oldChildren = (0, _lodash4.default)(this, 'props.children') || [];
+      var newChildren = (0, _lodash4.default)(nextProps, 'children') || [];
 
       if (oldChildren.length !== newChildren.leading) return true;
       if (this.state.open !== nextState.open) return true;
