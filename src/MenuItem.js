@@ -63,6 +63,7 @@ class MenuItem extends Component {
   shouldComponentUpdate(nextProps, nextState) {
     if (this.state.open !== nextState.open) return true;
     if (this.props.isOver !== nextProps.isOver) return true;
+    if(this.props.children.length !== nextProps.children.length) return true;
     return false;
   }
 

@@ -3,6 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.Title = exports.IconContainer = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -69,11 +70,11 @@ var defaultOpenIcon = function defaultOpenIcon() {
   );
 };
 
-var IconContainer = _styledComponents2.default.span(_templateObject, function (props) {
+var IconContainer = exports.IconContainer = _styledComponents2.default.span(_templateObject, function (props) {
   return props.expandable && "cursor: pointer;";
 });
 
-var Title = _styledComponents2.default.span(_templateObject2, function (props) {
+var Title = exports.Title = _styledComponents2.default.span(_templateObject2, function (props) {
   return props.textColor ? props.textColor : "inherit";
 });
 

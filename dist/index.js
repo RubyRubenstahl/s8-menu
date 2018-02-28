@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.DNDMenuItem = exports.MenuItem = exports.Menu = undefined;
+exports.DNDMenuItem = exports.Title = exports.IconContainer = exports.MenuItem = exports.Menu = undefined;
 
 var _Menu = require('./Menu');
 
@@ -21,4 +21,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.Menu = _Menu2.default;
 exports.MenuItem = _MenuItem2.default;
+exports.IconContainer = _MenuItem.IconContainer;
+exports.Title = _MenuItem.Title;
 exports.DNDMenuItem = _DNDMenuItem2.default;
