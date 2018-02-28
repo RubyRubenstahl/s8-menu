@@ -40,6 +40,10 @@ var _reactCollapse = require("react-collapse");
 
 var _reactCollapse2 = _interopRequireDefault(_reactCollapse);
 
+var _lodash3 = require("lodash.get");
+
+var _lodash4 = _interopRequireDefault(_lodash3);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
@@ -108,9 +112,13 @@ var MenuItem = function (_Component) {
   _createClass(MenuItem, [{
     key: "shouldComponentUpdate",
     value: function shouldComponentUpdate(nextProps, nextState) {
+      var oldChildren = (0, _lodash4.default)(this, 'props.children');
+      var newChildren = (0, _lodash4.default)(nextProps, 'children');
+
+      if (oldChildren.length !== newChildren.leading) return true;
       if (this.state.open !== nextState.open) return true;
       if (this.props.isOver !== nextProps.isOver) return true;
-      if (this.props.children.length !== nextProps.children.length) return true;
+
       return false;
     }
   }, {

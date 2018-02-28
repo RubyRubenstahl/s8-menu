@@ -61,8 +61,8 @@ class MenuItem extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    const oldChildren = get(this, 'props.children');
-    const newChildren = get(nextProps, 'children');
+    const oldChildren = get(this, 'props.children') || [];
+    const newChildren = get(nextProps, 'children') || [];
 
     if (oldChildren.length !== newChildren.leading) return true;
     if (this.state.open !== nextState.open) return true;
