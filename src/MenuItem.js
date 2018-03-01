@@ -68,7 +68,7 @@ class MenuItem extends Component {
     if (this.state.open !== nextState.open) return true;
     if (this.props.isOver !== nextProps.isOver) return true;
 
-    return false;
+    return true;
   }
 
   handleClick(e) {

@@ -115,7 +115,7 @@ var MenuItem = function (_Component) {
       var oldChildren = (0, _lodash4.default)(this, 'props.children') || [];
       var newChildren = (0, _lodash4.default)(nextProps, 'children') || [];
 
-      if (oldChildren.length !== newChildren.leading) return true;
+      if (oldChildren && oldChildren.length !== newChildren.length) return true;
       if (this.state.open !== nextState.open) return true;
       if (this.props.isOver !== nextProps.isOver) return true;
 
