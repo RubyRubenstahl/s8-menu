@@ -10,6 +10,7 @@ import isFunction from "lodash.isfunction";
 
 const dropTarget = {
   drop(props, monitor) {
+    if(monitor.didDrop()) return;
     if (isFunction(props.onDropped)) {
       const type = monitor.getItemType();
       const item = monitor.getItem();

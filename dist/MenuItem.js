@@ -119,7 +119,7 @@ var MenuItem = function (_Component) {
       if (this.state.open !== nextState.open) return true;
       if (this.props.isOver !== nextProps.isOver) return true;
 
-      return false;
+      return true;
     }
   }, {
     key: "handleClick",
