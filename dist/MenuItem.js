@@ -12,7 +12,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 var _templateObject = _taggedTemplateLiteral(["\n  padding: 8px;\n  display: inline-block;\n  ", ";\n"], ["\n  padding: 8px;\n  display: inline-block;\n  ", ";\n"]),
     _templateObject2 = _taggedTemplateLiteral(["\n  color: ", ";\n  flex-grow: 1;\n  display: flex;\n"], ["\n  color: ", ";\n  flex-grow: 1;\n  display: flex;\n"]),
     _templateObject3 = _taggedTemplateLiteral([""], [""]),
-    _templateObject4 = _taggedTemplateLiteral(["\n  display: flex;\n  align-items: center;\n  transition: all 0.2s ease-in-out;\n  outline: ", ";\n  outline-offset: -2pt;\n  ", ";\n"], ["\n  display: flex;\n  align-items: center;\n  transition: all 0.2s ease-in-out;\n  outline: ", ";\n  outline-offset: -2pt;\n  ", ";\n"]),
+    _templateObject4 = _taggedTemplateLiteral(["\n  display: flex;\n  align-items: center;\n  transition: all 0.2s ease-in-out;\n  ", "\n  \n  ", ";\n    ", "  \n\n"], ["\n  display: flex;\n  align-items: center;\n  transition: all 0.2s ease-in-out;\n  ", "\n  \n  ", ";\n    ", "  \n\n"]),
     _templateObject5 = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: column;\n"], ["\n  display: flex;\n  flex-direction: column;\n"]),
     _templateObject6 = _taggedTemplateLiteral(["\n  padding-left: 8pt;\n"], ["\n  padding-left: 8pt;\n"]);
 
@@ -85,9 +85,11 @@ var Title = exports.Title = _styledComponents2.default.span(_templateObject2, fu
 var ExtraComponents = _styledComponents2.default.span(_templateObject3);
 
 var Label = _styledComponents2.default.div(_templateObject4, function (props) {
-  return props.isOver ? "2px dashed lightblue" : "2px dashed #FFFFFF00";
+  return !props.canDropStyle && "\n      outline: " + (props.isOver ? "2px dashed lightblue" : "2px dashed #FFFFFF00") + ";}\n      outline-offset: -2pt;\n    ";
 }, function (props) {
   return props.backgroundColor ? "background-color: " + props.backgroundColor : "background-color: rgba(0,0,0,0);\n      &:hover {\n      background-color: rgba(0,0,0,.03);\n      }";
+}, function (props) {
+  return props.isOver && props.canDropStyle && props.canDropStyle;
 });
 
 var MenuItemContainer = _styledComponents2.default.li(_templateObject5);
