@@ -139,7 +139,26 @@ storiesOf('Drag and Drop Menu', module)
             <DNDMenuItem icon={bulbIcon} dragType={'action'} cuelist={5} cue={4} payload={1} title={'Scene5'}/>
           </Menu>
         </div>
-    );
+    )
+    .add('DND Menu custom drop style', () =>
+        <div>
+          <Menu>
+            <DNDMenuItem canDropStyle={'background-color: red;'} icon={folderIcon} dropTypes={[NativeTypes.FILE, 'media','action', NativeTypes.TEXT, NativeTypes.URL]} onDropped={action('dropped')} openIcon={folderOpenIcon} title="Accepts Anything">
+              <DNDMenuItem icon={bulbIcon} title={'Scene3'}/>
+              <DNDMenuItem icon={folderIcon} dropTypes={[NativeTypes.FILE, 'media', NativeTypes.TEXT, NativeTypes.URL]} onDropped={item=>console.log(item)} openIcon={folderOpenIcon} title="Nested Droppable"/>
+              <DNDMenuItem icon={folderIcon} openIcon={folderOpenIcon} title="Deep Folder">
+                <DNDMenuItem icon={bulbIcon} title={'Scene6'}/>
+                <DNDMenuItem icon={bulbIcon} title={'Scene7'}/>
+                <DNDMenuItem icon={bulbIcon} title={'Scene8'}/>
+              </DNDMenuItem>
+            </DNDMenuItem>
+            <DNDMenuItem icon={bulbIcon} dragType={''} dropTypes={NativeTypes.TEXT}  onDrop={action('Text dropped')} title={'Drop Text Here'}/>
+            <DNDMenuItem icon={bulbIcon} css={'&:hover{background-color: green}'} title={'Scene4'}/>
+            <DNDMenuItem icon={bulbIcon} dragType={'media'} payload={5} title={'Scene5'}/>
+            <DNDMenuItem icon={bulbIcon} dragType={'action'} cuelist={5} cue={4} payload={1} title={'Scene5'}/>
+          </Menu>
+        </div>
+    );;
 
 
 const cuelistRenderer = ({title,icon, cuelist, cue, onPlay})=>

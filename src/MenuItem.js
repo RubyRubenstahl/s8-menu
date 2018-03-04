@@ -29,9 +29,12 @@ const Label = styled.div`
   display: flex;
   align-items: center;
   transition: all 0.2s ease-in-out;
-  outline: ${props =>
-    props.isOver ? "2px dashed lightblue" : "2px dashed #FFFFFF00"};
-  outline-offset: -2pt;
+  ${props =>
+    !props.canDropStyle && (`
+      outline: ${props.isOver ? "2px dashed lightblue" : "2px dashed #FFFFFF00"};}
+      outline-offset: -2pt;
+    `)}
+  
   ${props =>
     props.backgroundColor
       ? `background-color: ${props.backgroundColor}`
@@ -39,6 +42,8 @@ const Label = styled.div`
       &:hover {
       background-color: rgba(0,0,0,.03);
       }`};
+    ${props=> props.isOver && props.canDropStyle && props.canDropStyle}  
+
 `;
 
 const MenuItemContainer = styled.li`

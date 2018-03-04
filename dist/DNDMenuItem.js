@@ -39,6 +39,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var dropTarget = {
   drop: function drop(props, monitor) {
+    if (monitor.didDrop()) return;
     if ((0, _lodash2.default)(props.onDropped)) {
       var type = monitor.getItemType();
       var item = monitor.getItem();
