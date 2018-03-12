@@ -87,7 +87,9 @@ class MenuItem extends Component {
     if (isFunction(this.props.onIconClick)) {
       this.props.onIconClick();
     }
-    this.setState({ open: !this.state.open });
+    if(this.props.expandable !== false) {
+      this.setState({open: !this.state.open});
+    }
   }
 
   render() {
@@ -96,7 +98,7 @@ class MenuItem extends Component {
       return render(rest);
     }
 
-    const { title, children, isOver, textColor, extra } = this.props;
+    const { title, children, isOver, textColor, extra, expandable=true } = this.props;
     const { open } = this.state;
 
     const hasChildren = children !== undefined;
@@ -109,12 +111,11 @@ class MenuItem extends Component {
 
     const hasOpenIcon = openIcon !== undefined;
     const showOpenIcon = open && hasOpenIcon;
-
     return (
       <MenuItemContainer {...this.props}>
         <Label {...this.props}>
           <IconContainer
-            expandable={hasChildren}
+            expandable={expandable && hasChildren}
             onClick={this.handleIconClick}
             onTouchState={this.handleIconClick}
             {...this.props}
@@ -157,6 +158,7 @@ MenuItem.propTypes = {
   onIconClick: propTypes.func,
   extra: propTypes.element,
   render: propTypes.func,
+  expandable: propTypes.bool
 };
 
 export default MenuItem;

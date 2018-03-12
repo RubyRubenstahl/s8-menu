@@ -117,7 +117,22 @@ storiesOf('Menu', module)
       <MenuItem icon={bulbIcon} title={'Scene4'}/>
       <MenuItem icon={bulbIcon} title={'Scene5'}/>
     </Menu>
-);
+    )
+    .add('Expandable Disabled', () =>
+        <Menu>
+          <MenuItem expandable={false}
+                    icon={folderIcon}
+                    openIcon={folderOpenIcon}
+                    title="Folder"
+          >
+            <MenuItem icon={folderIcon} openIcon={folderOpenIcon} title="Deep Folder">
+              <MenuItem icon={bulbIcon} title={'Scene6'}/>
+              <MenuItem icon={bulbIcon} title={'Scene7'}/>
+              <MenuItem icon={bulbIcon} title={'Scene8'}/>
+            </MenuItem>
+          </MenuItem>
+        </Menu>
+    );
 
 storiesOf('Drag and Drop Menu', module)
     .addDecorator(DragDropDecorator)
