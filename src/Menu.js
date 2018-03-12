@@ -14,12 +14,6 @@ const MenuContainer = styled.ul`
   cursor: default;
   user-select: none;
   ${props => props.css && props.css};
-      
-  > li > div:first-child {
-        background-color: ${props => props.headerBackgroundColor ? props.headerBackgroundColor : 'inherit' };
-        color: ${props => props.headerTextColor ? props.headerTextColor : 'inherit' };
-        border-radius: inherit;
-  }
 `;
 
 class Menu extends Component {

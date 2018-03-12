@@ -66,19 +66,19 @@ var dropTarget = {
   }
 };
 
-var DNDMenueItem = function (_Component) {
-  _inherits(DNDMenueItem, _Component);
+var DNDMenuItem = function (_Component) {
+  _inherits(DNDMenuItem, _Component);
 
-  function DNDMenueItem(props) {
-    _classCallCheck(this, DNDMenueItem);
+  function DNDMenuItem(props) {
+    _classCallCheck(this, DNDMenuItem);
 
-    var _this = _possibleConstructorReturn(this, (DNDMenueItem.__proto__ || Object.getPrototypeOf(DNDMenueItem)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (DNDMenuItem.__proto__ || Object.getPrototypeOf(DNDMenuItem)).call(this, props));
 
     _this.state = {};
     return _this;
   }
 
-  _createClass(DNDMenueItem, [{
+  _createClass(DNDMenuItem, [{
     key: "render",
     value: function render() {
       var _props = this.props,
@@ -94,10 +94,10 @@ var DNDMenueItem = function (_Component) {
     }
   }]);
 
-  return DNDMenueItem;
+  return DNDMenuItem;
 }(_react.Component);
 
-DNDMenueItem.propTypes = {
+DNDMenuItem.propTypes = {
   icon: _propTypes2.default.object,
   openIcon: _propTypes2.default.object,
   backgroundColor: _propTypes2.default.string,
@@ -141,7 +141,7 @@ var Draggable = (0, _reactDnd.DragSource)(function (_ref) {
   var _ref$dragType = _ref.dragType,
       dragType = _ref$dragType === undefined ? "none" : _ref$dragType;
   return dragType;
-}, dragSpec, collect)(DNDMenueItem);
+}, dragSpec, collect)(DNDMenuItem);
 
 var Droppable = (0, _reactDnd.DropTarget)(function (_ref2) {
   var _ref2$dropTypes = _ref2.dropTypes,
