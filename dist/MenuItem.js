@@ -137,7 +137,9 @@ var MenuItem = function (_Component) {
       if ((0, _lodash2.default)(this.props.onIconClick)) {
         this.props.onIconClick();
       }
-      this.setState({ open: !this.state.open });
+      if (this.props.expandable !== false) {
+        this.setState({ open: !this.state.open });
+      }
     }
   }, {
     key: "render",
@@ -155,7 +157,9 @@ var MenuItem = function (_Component) {
           children = _props2.children,
           isOver = _props2.isOver,
           textColor = _props2.textColor,
-          extra = _props2.extra;
+          extra = _props2.extra,
+          _props2$expandable = _props2.expandable,
+          expandable = _props2$expandable === undefined ? true : _props2$expandable;
       var open = this.state.open;
 
 
@@ -172,7 +176,6 @@ var MenuItem = function (_Component) {
 
       var hasOpenIcon = openIcon !== undefined;
       var showOpenIcon = open && hasOpenIcon;
-
       return _react2.default.createElement(
         MenuItemContainer,
         this.props,
@@ -182,7 +185,7 @@ var MenuItem = function (_Component) {
           _react2.default.createElement(
             IconContainer,
             _extends({
-              expandable: hasChildren,
+              expandable: expandable && hasChildren,
               onClick: this.handleIconClick,
               onTouchState: this.handleIconClick
             }, this.props),
@@ -236,7 +239,8 @@ MenuItem.propTypes = {
   onItemClick: _propTypes2.default.func,
   onIconClick: _propTypes2.default.func,
   extra: _propTypes2.default.element,
-  render: _propTypes2.default.func
+  render: _propTypes2.default.func,
+  expandable: _propTypes2.default.bool
 };
 
 exports.default = MenuItem;

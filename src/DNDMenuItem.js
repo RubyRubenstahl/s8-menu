@@ -37,7 +37,7 @@ const dropTarget = {
   }
 };
 
-class DNDMenueItem extends Component {
+class DNDMenuItem extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -55,7 +55,7 @@ class DNDMenueItem extends Component {
   }
 }
 
-DNDMenueItem.propTypes = {
+DNDMenuItem.propTypes = {
   icon: propTypes.object,
   openIcon: propTypes.object,
   backgroundColor: propTypes.string,
@@ -102,7 +102,7 @@ const Draggable = DragSource(
   ({ dragType = "none" }) => dragType,
   dragSpec,
   collect
-)(DNDMenueItem);
+)(DNDMenuItem);
 
 const Droppable = DropTarget(
   ({ dropTypes = [] }) => dropTypes,
