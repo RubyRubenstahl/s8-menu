@@ -85,6 +85,21 @@ storiesOf('Menu', module)
         <MenuItem icon={bulbIcon} title={'Scene5'}/>
       </StyledMenu>
     )
+
+    .add('Header Colors',() =>
+        <Menu headerBackgroundColor={"#444"} headerTextColor={"white"}>
+          <MenuItem icon={folderIcon}
+                    openIcon={folderOpenIcon}
+                    title="Folder"
+          >
+            <MenuItem icon={bulbIcon} title={'Scene1'}/>
+            <MenuItem icon={bulbIcon} title={'Scene2'}/>
+            <MenuItem icon={bulbIcon} title={'Scene3'}/>
+          </MenuItem>
+          <MenuItem icon={bulbIcon} title={'Scene4'}/>
+          <MenuItem icon={bulbIcon} title={'Scene5'}/>
+        </Menu>
+    )
     .add('default icon', () =>
         <Menu>
           <MenuItem title="Deep Folder">
