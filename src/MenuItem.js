@@ -8,6 +8,7 @@ import isFunction from "lodash.isfunction";
 import Menu from "./Menu";
 import Collapse from "react-collapse";
 import get from 'lodash.get';
+import Spinner from 'react-spinkit';
 const defaultIcon = () => <span>&#x23F5;</span>;
 const defaultOpenIcon = () => <span>&#x23F7;</span>;
 
@@ -22,6 +23,15 @@ export const Title = styled.span`
   flex-grow: 1;
   display: flex;
 `;
+
+const StyledSpinner = styled(Spinner)
+  .attrs({
+    name: 'circle',
+    color: props => props.spinnerColor ? props.spinnerColor : 'darkgrey'
+  })`
+    max-width: 12pt;
+    max-height: 12pt;
+`
 
 const ExtraComponents = styled.span``;
 
@@ -98,7 +108,7 @@ class MenuItem extends Component {
       return render(rest);
     }
 
-    const { title, children, isOver, textColor, extra, expandable=true } = this.props;
+    const { title, children, isOver, textColor, extra, expandable=true, loading } = this.props;
     const { open } = this.state;
 
     const hasChildren = children !== undefined;
@@ -109,8 +119,10 @@ class MenuItem extends Component {
       openIcon = defaultOpenIcon();
     }
 
+
+    icon = loading ? <StyledSpinner {...this.props}/> : icon;
     const hasOpenIcon = openIcon !== undefined;
-    const showOpenIcon = open && hasOpenIcon;
+    const showOpenIcon = open && hasOpenIcon && !loading;
     return (
       <MenuItemContainer {...this.props}>
         <Label {...this.props}>

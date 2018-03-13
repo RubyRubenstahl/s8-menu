@@ -115,6 +115,21 @@ storiesOf('Menu', module)
           <MenuItem icon={bulbIcon} title={'Scene5'}/>
         </Menu>
     )
+    .add('loading', () =>
+        <Menu>
+          <MenuItem title="Deep Folder" loading>
+            <MenuItem icon={bulbIcon} title={'Scene1'}/>
+            <MenuItem icon={bulbIcon} title={'Scene2'}/>
+            <MenuItem icon={folderIcon} openIcon={folderOpenIcon} title="Deep Folder">
+              <MenuItem icon={bulbIcon} title={'Scene6'}/>
+              <MenuItem icon={bulbIcon} title={'Scene7'}/>
+              <MenuItem icon={bulbIcon} title={'Scene8'}/>
+            </MenuItem>
+          </MenuItem>
+          <MenuItem icon={bulbIcon} title={'Scene4'} loading spinnerColor={'lightblue'}/>
+          <MenuItem icon={bulbIcon} title={'Scene5'}/>
+        </Menu>
+    )
     .add('click handlers', () =>
     <Menu>
       <MenuItem title="Click Me"
