@@ -11,10 +11,11 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _templateObject = _taggedTemplateLiteral(["\n  padding: 8px;\n  display: inline-block;\n  ", ";\n"], ["\n  padding: 8px;\n  display: inline-block;\n  ", ";\n"]),
     _templateObject2 = _taggedTemplateLiteral(["\n  color: ", ";\n  flex-grow: 1;\n  display: flex;\n"], ["\n  color: ", ";\n  flex-grow: 1;\n  display: flex;\n"]),
-    _templateObject3 = _taggedTemplateLiteral([""], [""]),
-    _templateObject4 = _taggedTemplateLiteral(["\n  display: flex;\n  align-items: center;\n  transition: all 0.2s ease-in-out;\n  ", "\n  \n  ", ";\n    ", "  \n\n"], ["\n  display: flex;\n  align-items: center;\n  transition: all 0.2s ease-in-out;\n  ", "\n  \n  ", ";\n    ", "  \n\n"]),
-    _templateObject5 = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: column;\n"], ["\n  display: flex;\n  flex-direction: column;\n"]),
-    _templateObject6 = _taggedTemplateLiteral(["\n  padding-left: 8pt;\n"], ["\n  padding-left: 8pt;\n"]);
+    _templateObject3 = _taggedTemplateLiteral(["\n    max-width: 12pt;\n    max-height: 12pt;\n"], ["\n    max-width: 12pt;\n    max-height: 12pt;\n"]),
+    _templateObject4 = _taggedTemplateLiteral([""], [""]),
+    _templateObject5 = _taggedTemplateLiteral(["\n  display: flex;\n  align-items: center;\n  transition: all 0.2s ease-in-out;\n  ", "\n  \n  ", ";\n    ", "  \n\n"], ["\n  display: flex;\n  align-items: center;\n  transition: all 0.2s ease-in-out;\n  ", "\n  \n  ", ";\n    ", "  \n\n"]),
+    _templateObject6 = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: column;\n"], ["\n  display: flex;\n  flex-direction: column;\n"]),
+    _templateObject7 = _taggedTemplateLiteral(["\n  padding-left: 8pt;\n"], ["\n  padding-left: 8pt;\n"]);
 
 var _react = require("react");
 
@@ -43,6 +44,10 @@ var _reactCollapse2 = _interopRequireDefault(_reactCollapse);
 var _lodash3 = require("lodash.get");
 
 var _lodash4 = _interopRequireDefault(_lodash3);
+
+var _reactSpinkit = require("react-spinkit");
+
+var _reactSpinkit2 = _interopRequireDefault(_reactSpinkit);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -82,9 +87,16 @@ var Title = exports.Title = _styledComponents2.default.span(_templateObject2, fu
   return props.textColor ? props.textColor : "inherit";
 });
 
-var ExtraComponents = _styledComponents2.default.span(_templateObject3);
+var StyledSpinner = (0, _styledComponents2.default)(_reactSpinkit2.default).attrs({
+  name: 'circle',
+  color: function color(props) {
+    return props.spinnerColor ? props.spinnerColor : 'darkgrey';
+  }
+})(_templateObject3);
 
-var Label = _styledComponents2.default.div(_templateObject4, function (props) {
+var ExtraComponents = _styledComponents2.default.span(_templateObject4);
+
+var Label = _styledComponents2.default.div(_templateObject5, function (props) {
   return !props.canDropStyle && "\n      outline: " + (props.isOver ? "2px dashed lightblue" : "2px dashed #FFFFFF00") + ";}\n      outline-offset: -2pt;\n    ";
 }, function (props) {
   return props.backgroundColor ? "background-color: " + props.backgroundColor : "background-color: rgba(0,0,0,0);\n      &:hover {\n      background-color: rgba(0,0,0,.03);\n      }";
@@ -92,9 +104,9 @@ var Label = _styledComponents2.default.div(_templateObject4, function (props) {
   return props.isOver && props.canDropStyle && props.canDropStyle;
 });
 
-var MenuItemContainer = _styledComponents2.default.li(_templateObject5);
+var MenuItemContainer = _styledComponents2.default.li(_templateObject6);
 
-var IndentedMenu = (0, _styledComponents2.default)(_Menu2.default)(_templateObject6);
+var IndentedMenu = (0, _styledComponents2.default)(_Menu2.default)(_templateObject7);
 
 var MenuItem = function (_Component) {
   _inherits(MenuItem, _Component);
@@ -159,7 +171,8 @@ var MenuItem = function (_Component) {
           textColor = _props2.textColor,
           extra = _props2.extra,
           _props2$expandable = _props2.expandable,
-          expandable = _props2$expandable === undefined ? true : _props2$expandable;
+          expandable = _props2$expandable === undefined ? true : _props2$expandable,
+          loading = _props2.loading;
       var open = this.state.open;
 
 
@@ -174,8 +187,9 @@ var MenuItem = function (_Component) {
         openIcon = defaultOpenIcon();
       }
 
+      icon = loading ? _react2.default.createElement(StyledSpinner, this.props) : icon;
       var hasOpenIcon = openIcon !== undefined;
-      var showOpenIcon = open && hasOpenIcon;
+      var showOpenIcon = open && hasOpenIcon && !loading;
       return _react2.default.createElement(
         MenuItemContainer,
         this.props,

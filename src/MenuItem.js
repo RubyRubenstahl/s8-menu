@@ -165,7 +165,7 @@ MenuItem.propTypes = {
   openIcon: propTypes.object,
   backgroundColor: propTypes.string,
   textColor: propTypes.string,
-  title: propTypes.oneOfType([propTypes.string, propTypes.element]).isRequired,
+  title: propTypes.oneOfType([propTypes.string, propTypes.element]),
   onItemClick: propTypes.func,
   onIconClick: propTypes.func,
   extra: propTypes.element,
